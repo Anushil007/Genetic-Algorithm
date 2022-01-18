@@ -1,7 +1,7 @@
 # initial population
 import numpy
-import ga1
+import gen_pop
 routine=[]
 for i in range(6):   
-      routine=ga1.generateinitialpop()
-      print(routine, i)
+      routine=gen_pop.generateinitialpop()
+      print("This is population ",i, "\n",routine)
