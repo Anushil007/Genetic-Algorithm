@@ -1,2 +1,2 @@
-# GA
-Genetic algorithm implementation for  routine generation
+1. Crack three eggs over bowl.
+   now
