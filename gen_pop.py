@@ -105,6 +105,34 @@ def show(arr):
     for i in range(len(arr)):
         if arr[i] <= 5:
             arr[i] = 'BB DBMS'
+        # elif arr[i]<=:
+        #     arr[i]='DBMS BB,SP'
+        elif arr[i]<=11:
+            arr[i]='OS SP'
+        
+        elif arr[i]<=17:
+            arr[i]='ES ML'
+        
+        elif arr[i]<=22:
+            arr[i]='OOAD DMG'
+        
+        elif arr[i]<=28:
+            arr[i]='AI SLS'
+        
+        elif arr[i]<=32:
+            arr[i]='EC JJ'
+
+        elif arr[i]<=33:
+            arr[i]='EC T YB'
+
+        elif arr[i]<=36:
+            arr[i]='DBMS LAB SP,BB/OOAD DMG'
+        elif arr[i]<=39:
+            arr[i]='AI SLS/OS SP'
+        elif arr[i]<=42:
+            arr[i]='ES ML/DBMS BB,SP'
+        elif arr[i]==44:
+            arr[i]='Break'
         
     print(arr)
 show(matrix1)
@@ -120,11 +148,11 @@ for i in range(6):
 #lst3 = []
 #print(lst)
 lst3 = arr
-
 #print(lst3[0])
 for i in range(len(lst3)):
-    print(lst3[i])
-
+    
+    #print(lst3[i])
+    pass
 
 
 # mat = []
@@ -132,10 +160,17 @@ for i in range(len(lst3)):
 #     for j in range(routine[i]):
 #         print(j)
 
+#hard constraint
 
+# noconflict=10
+# conflict=-10
+# def calcFitness():
+#     # for i in range(len(lst)):
+#     #     for j in range(lst[i]):
+#     for i in range(6):
+#         chk=print(lst3[i])
+#         for j in range(8):
+#             lst.append(chk[j])
+            
+# calcFitness()
     
-
-
-
-def calcFitness():
-    pass
