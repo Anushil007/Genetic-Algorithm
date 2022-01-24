@@ -10,27 +10,33 @@ children = []
 overal_routine = [0 for i in range(6)]
 
 
-for i in range(6):     #this loop is for the generation of population
+for i in range(2000):     #this loop is for the generation of population
     routine = []
     lst = []
     lst_1D = []
-    #print('Population',i)
-    mylist1 = [[1, 2], [3, 4], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15], [16, 17], [18, 19], [20, 21], [23, 24],
-                [25, 26], [27, 28], [29, 30], [31, 32]]  # Double Class
-    mylist2 = [[34, 35, 36], [37, 38, 39], [40, 41, 42]]  # Lab
-    mylist3 = [[5], [22], [33]]  # Single Period Class
 
+
+    # mylist1 = [[1, 2], [3, 4], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15], [16, 17], [18, 19], [20, 21], [23, 24],[25, 26], [27, 28], [29, 30], [31, 32]]  # Double Class
+    # mylist2 = [[34, 35, 36], [37, 38, 39], [40, 41, 42]]  # Lab
+    # mylist3 = [[5], [22], [33]]  # Single Period Class
+    #print('Population',i)
+    mylist1 = [[1,2],[3,4],[5,6],[7,8],[9,10],[12,13],[14,15],[17,18],[19,20],[22,23],[26,27],[28,29],[30,31],[32,33]] #Double class
+    mylist2 = [[35,36],[37,38],[39,40],[41,42]] #labs
+    mylist3 = [[11],[16],[21],[24],[25],[34]] #single period 
+    lab_len=mylist2[0]
+    lab_len=(len(lab_len))
     sec_period_choice = [1, 2]
     random.shuffle(mylist1)
     random.shuffle(mylist2)
     random.shuffle(mylist3)
-
+    
     for u in range(6):   # this loop is for generation of chromosome
     #if len(mylist1) != 0 and len(mylist2) != 0:
         lab = 0
         length = 0
         e = random.choice(sec_period_choice)
         lunch = random.choice([4,5])
+
         if e == 1:
             if len(mylist1) != 0:
                 x = (random.choice(mylist1))
@@ -92,42 +98,34 @@ for i in range(6):     #this loop is for the generation of population
 
         lst.append([100])
         lst_1D = oneDArray(lst)
-        #print(lst)
-
-
-
-        e = random.choice(sec_period_choice)
-        if e == 1:
-            if len(mylist1) != 0:
-                x = (random.choice(mylist1))
-                index = mylist1.index(x)
-                mylist1.pop(index)
+        length=len(lst_1D)
+        if length==5 and lab_len==3:
+            if len(mylist2) != 0:
+                x = (random.choice(mylist2))
+                index = mylist2.index(x)
+                mylist2.pop(index)
                 lst.append(x)
-            elif len(mylist2) != 0 and lab == 0:
+                lab=1
+        lst_1D = oneDArray(lst)
+        length=len(lst_1D)
+
+        #print(len(lst))
+        
+
+
+        if (length!=8):
+            if len(mylist2) != 0 and lab==0:
                 x = (random.choice(mylist2))
                 index = mylist2.index(x)
                 mylist2.pop(index)
                 lab = 1
-                lst.append(x)   
-            elif len(mylist3) != 0:
-                x = (random.choice(mylist3))
-                index = mylist3.index(x)
-                mylist3.pop(index)
                 lst.append(x) 
-            else:
-                pass
-        elif e == 2:
-            if len(mylist2) != 0 and lab == 0:
-                x = (random.choice(mylist2))
-                index = mylist2.index(x)
-                mylist2.pop(index)
-                lab = 1
-                lst.append(x)
+            
             elif len(mylist1) != 0:
                 x = (random.choice(mylist1))
                 index = mylist1.index(x)
                 mylist1.pop(index)
-                lst.append(x)
+                lst.append(x) 
             elif len(mylist3) != 0:
                 x = (random.choice(mylist3))
                 index = mylist3.index(x)
@@ -135,27 +133,59 @@ for i in range(6):     #this loop is for the generation of population
                 lst.append(x) 
             else:
                 pass
+            # elif e == 2:
+            #     if len(mylist2) != 0 and lab==0 :
+            #         x = (random.choice(mylist2))
+            #         index = mylist2.index(x)
+            #         mylist2.pop(index)
+            #         lab = 1
+            #         lst.append(x)
+            #     elif len(mylist1) != 0:
+            #         x = (random.choice(mylist1))
+            #         index = mylist1.index(x)
+            #         mylist1.pop(index)
+            #         lst.append(x)
+            #     elif len(mylist3) != 0:
+            #         x = (random.choice(mylist3))
+            #         index = mylist3.index(x)
+            #         mylist3.pop(index)
+            #         lst.append(x) 
+            #     else:
+            #         pass
 
-        #print(lst)
-        lst_1D = oneDArray(lst)
-        length = len(lst_1D)
-        #print(length)
-        if length == 7:
-            if len(mylist3) != 0:
-                x = (random.choice(mylist3))
-                index = mylist3.index(x)
-                mylist3.pop(index)
-                lst.append(x) 
-        elif length == 6:
-            if len(mylist1) != 0:
-                x = (random.choice(mylist1))
-                index = mylist1.index(x)
-                mylist1.pop(index)
-                lst.append(x) 
-        else:
-            pass
+            #print(lst)
+            lst_1D = oneDArray(lst)
+            length = len(lst_1D)
+            print(length)
+            if length == 7:
+                if len(mylist3) != 0:
+                    x = (random.choice(mylist3))
+                    index = mylist3.index(x)
+                    mylist3.pop(index)
+                    lst.append(x) 
+            elif length == 6:
+                if len(mylist2) != 0 and lab==0:
+                    x = (random.choice(mylist2))
+                    index = mylist2.index(x)
+                    mylist2.pop(index)
+                    lst.append(x) 
+                    print(length)
+                if len(mylist1) != 0:
+                    x = (random.choice(mylist1))
+                    index = mylist1.index(x)
+                    mylist1.pop(index)
+                    lst.append(x) 
+                elif len(mylist2) != 0:
+                    x = (random.choice(mylist2))
+                    index = mylist2.index(x)
+                    mylist2.pop(index)
+                    lst.append(x) 
+                    print(length)
+                else:
+                    print("error")
 
-        #print(lst)
+
+        print((lst))
         routine.append(lst)
         lst = []
     #print(routine)
@@ -171,22 +201,24 @@ for i in range(6):     #this loop is for the generation of population
     #print(matrix1)
     #print(len(matrix1))
 
-    arr = [[0 for i in range(8)] for j in range(6)]
-    count = 0
-    for i in range(6):
-        for j in range(8):
-            arr[i][j] = matrix1[count]
+    arr = [[0 for q in range(8)] for p in range(6)]
+    #count = 0
+    print(count)
+    for p in range(6):
+        for q in range(8):
+            arr[p][q] = matrix1[count]
             count += 1
 
 
     #print(lst)
     lst3 = arr
+    #print(lst3)
 
     codeLst = [5, 11, 17, 22, 28, 32, 33] 
     lecCodeLst = ['BB', 'SP', 'ML', 'DMG', 'SLS', 'JJ', 'YB']
 
     chk = []
-    len = []
+
     def calcFitness(chk):
         lecCount = [0 for i in range(7)]
         a = 0
@@ -243,15 +275,6 @@ for i in range(6):     #this loop is for the generation of population
 
     #print(overal_score)
     overal_routine[i] = matrix1
-    print(overal_routine[i])
+    #print(overal_routine[i])
+    #print(len(matrix1))
     print(overal_score)
-
-
-
-        
-
-
-
-
-
-    
