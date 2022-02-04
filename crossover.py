@@ -18,20 +18,13 @@ def partial_crossover(lst1, lst2, lab_len):
     lst1_1 = deepcopy(lst1)
     lst2_2=deepcopy(lst2)
     x=0
-    # print(lst1,"dhssssssssssssssss")
-    # print(lst2,"sdhhhhhhhhhhhhhhhhhhhhhhh")
     i = j = 0
     lst1off=[]
     lst2off=[]
     offspring = []
     routine_two_offspring = []   # two store two offspring after calculating fitness
     score_offspring_lst = []    #two store two offspring fitness value
-
-    # lst1=[[20, 21, 29, 30, 100, 37, 38, 39], [40, 41, 42, 100, 23, 24, 16, 17], [10, 11, 1, 2, 100, 34, 35, 36], [25, 26, 18, 19, 100, 31, 32, 5], [6, 7, 3, 4, 100, 27, 28, 22], [14, 15, 12, 13, 100, 8, 9, 33]]
-    # lst2=[[37, 38, 39, 100, 16, 17, 25, 26], [27, 28, 12, 13, 100, 34, 35, 36], [40, 41, 42, 100, 14, 15, 20, 21], [10, 11, 1, 2, 100, 8, 9, 33], [29, 30, 6, 7, 100, 3, 4, 5], [18, 19, 23, 24, 100, 31, 32, 22]]
     x=random.randint(0,5)
-    #print(x)
-
     lst1off.append(lst2_2[x])
     lst2_2.pop(x)
 
@@ -139,21 +132,27 @@ def partial_crossover(lst1, lst2, lab_len):
             for i in range(6):
                 for j in range(8):
 
-                    if len(mis_prac) != 0 and present[i][j] == '*' and present[i][j + 1] == '*' and present[i][j + 2] == '*':
+                    if len(mis_prac_smp) != 0 and present[i][j] == '*' and present[i][j + 1] == '*' and present[i][j + 2] == '*':
                         present[i][j] = 'prac'
+                        mis_prac_smp.pop(0)
                         present[i][j + 1] = 'prac'
+                        mis_prac_smp.pop(0)
                         present[i][j + 2] = 'prac'
-                    elif len(mis_lec) != 0 and present[i][j] == '*' and present[i][j + 1] == '*':
+                        mis_prac_smp.pop(0)
+                    elif len(mis_lec_smp) != 0 and present[i][j] == '*' and present[i][j + 1] == '*':
                         present[i][j] = 'Lec'
+                        mis_lec_smp.pop(0)
                         present[i][j + 1] = 'Lec'
-                    elif len(mis_tut) != 0 and present[i][j] == '*':
+                        mis_lec_smp.pop(0)
+                    elif len(mis_tut_smp) != 0 and present[i][j] == '*':
                         present[i][j] = 'Tut'
+                        mis_tut_smp.pop(0)
 
         # print(mis_prac_smp,"mis prac")
         # print(mis_lec_smp,"mis prac")
         # print(mis_tut_smp,"mis prac")
         # print(not_present,"not present")
-        # print(present,"present")
+        #print(present,"present")
 
         if lab_len == 2:
             for i in range(6):
@@ -183,14 +182,6 @@ def partial_crossover(lst1, lst2, lab_len):
         if '*' in present1:
             #print("this is return")
             return [],[]
-
-        # Replacing missing class
-        # if len(mis_prac)!=0:
-        #         if 'prac'  not in  present1:
-        #             print(lst1)
-        #             print(lst2)
-        #             print("cvsddddddddddddddddddddddddddddddddddddddddddddd")
-        #             return [],[]
      
         if lab_len == 3:
             for i in range(6):
@@ -249,8 +240,8 @@ def partial_crossover(lst1, lst2, lab_len):
             #print(score)
             overal_score += score  
         if overal_score==480:
-            score_offspring_lst.append(overal_score)
-            return routine_offspring,score_offspring_lst
+            score_offspring_lst.append(overal_score)  
+            return routine_two_offspring,score_offspring_lst
         score_offspring_lst.append(overal_score)
 
     return routine_two_offspring, score_offspring_lst

@@ -6,14 +6,14 @@ def generator():
     from fitness import calcFitness
     from roulette_selection import selection
     from crossover import partial_crossover
-    from teachermatrix import teacher_matrix
+    #from teachermatrix import teacher_matrix
 
     score_lst = []
 
     routine_lst = []
 
     # semester_routine = float(input("Enter the batch number:"))
-    semester_routine = 2075
+    semester_routine = 2076
 
     for i in range(6):
         if semester_routine == 2075:
@@ -91,49 +91,25 @@ def generator():
     i = 0
     j = 0
     count=0
-    while 480 not in score_lst:
-        
-        #print(i)
-        #print(score_lst[i])
-        
-
+    while 480 not in score_lst and count<100:
         if 1:
-            #print(score_lst[i])
-            #print(routine_lst[0])
-            #print(routine_lst[1])
             routine1_lst = []
             score1_lst = []
             a=routine_lst[0].copy()
             b=routine_lst[1].copy()
-            if count>100:
-                generator()
-                break
-
-
-            # while 1:
-            #     try:
-            #         routine1_lst, score1_lst = partial_crossover(routine_lst[0],routine_lst[1], lab_len)
-            #         break
-            #     except IndexError as error:
-            #         print('One')
-            #         routine1_lst, score1_lst = partial_crossover(routine_lst[0],routine_lst[1], lab_len)
-            #     else:
-            #         break
-
             routine1_lst, score1_lst = partial_crossover(a,b, lab_len)
-            #print("this is first")
-            #print(routine1_lst)
-            #print(score1_lst)
-
-            
-            while(len(routine1_lst) == 0 and len(score1_lst)==0):
-                #print(c,"this isn c")
+            c=0
+            while(len(routine1_lst) == 0 and len(score1_lst)==0) and c<100:
+                c=c+1
                 a=routine_lst[0].copy()
                 b=routine_lst[1].copy()
-                routine1_lst, score1_lst = partial_crossover(a,b, lab_len)   
-
-
-            if len(score1_lst)==1:
+                routine1_lst, score1_lst = partial_crossover(a,b, lab_len)  
+            if len(score1_lst)==0:
+                score_lst,routine_lst=generator()
+                print('this is inside if')
+                return score_lst,routine_lst
+            
+            elif len(score1_lst)==1:
                 score_lst[0]=score1_lst[0]
                 routine_lst[0]= routine1_lst[0]
 
@@ -141,15 +117,18 @@ def generator():
                 for j in range(2):
                     routine_lst[j] = routine1_lst[j]
                     score_lst[j]= score1_lst[j]
-            #print(routine_lst)
-            #print(score_lst)
             routine_lst, score_lst = selection(score_lst, routine_lst)
-            print(score_lst,"this is score")
             count=count+1
             print(count)
-
-generator()
-
-
+            #print(score_lst,routine_lst,'this is score list and routine list')
+    return(score_lst,routine_lst)
+for i in range(50):
+    score=[]
+    routine=[]
+    score=generator()
+    while 480 not in score:
+        score,routine=generator()
+    print("thisis i",i,score)
+    print('this is routine',routine[0])
 
 
