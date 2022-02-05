@@ -4,7 +4,8 @@ import random
 from fitness import calcFitness
 import sys
 from copy import deepcopy
-
+import pickle
+from teacherconflict import lec_checkconflict
 
 
 
@@ -14,7 +15,7 @@ def oneDArray(x):
 
 # for crossover                                              
 
-def partial_crossover(lst1, lst2, lab_len):
+def partial_crossover(lst1, lst2, lab_len,batch):
     lst1_1 = deepcopy(lst1)
     lst2_2=deepcopy(lst2)
     x=0
@@ -236,9 +237,16 @@ def partial_crossover(lst1, lst2, lab_len):
         for i in range(6): 
             chk=routine_offspring[i]
             #print(chk)
-            score = calcFitness(chk) 
+            score = calcFitness(chk,batch) 
             #print(score)
-            overal_score += score  
+            overal_score += score
+      
+        if batch != 2075:
+            with open('file4.txt','rb') as f:
+                routine_2075=pickle.load(f) 
+            scoreconflict=lec_checkconflict(routine_2075,routine_offspring)
+            overal_score=overal_score+scoreconflict
+
         if overal_score==480:
             score_offspring_lst.append(overal_score)  
             return routine_two_offspring,score_offspring_lst
