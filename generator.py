@@ -11,6 +11,7 @@ from teacher_code import LecturerCode
   
 def generator(batch):
 
+    #allLecturerMatrix = [[[0 for j in range(8)]for i in range(6)]for k in range(1, 29)] 
     score_lst = []
 
     routine_lst = []
@@ -59,10 +60,12 @@ def generator(batch):
             #print(score)
             overal_score += score 
         scoreconflict=0
+        scoreconflict=lec_checkconflict(lst3, batch)
+        overal_score=overal_score+scoreconflict 
         if batch != 2075:
             with open('file4.txt','rb') as f:
                 routine_2075=pickle.load(f) 
-            scoreconflict=lec_checkconflict(routine_2075,lst3)
+            scoreconflict=lec_checkconflict(lst3, batch)
             overal_score=overal_score+scoreconflict 
             scoreconflict1 = lab_checkconflict(routine_2075, lst3)
             overal_score=overal_score+scoreconflict1 

@@ -45,7 +45,7 @@ def LecturerCode(batch):
     elif batch == 2077:
         codeLst = [5, 12, 16, 19, 23, 25, 27, 28, 29, 30]
         lecCodeLst = ['CD','MLP','BRM','DG','RPD','NRB', 'BK', 'TEST','RS', 'PL']
-        lectId = [23, 24, 25, 11, 26, 27, 9, 28]
+        lectId = [23, 24, 25, 11, 26, 27, 9, 28,12,17]
         lab_lst = [33,36,39,42]
         lab_lecturer = [[30], [30], [23,25,12], [23,25,26]]
         lab_lec = [[]]
@@ -59,5 +59,9 @@ def LecturerCode(batch):
     return codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len
 
 
+def allLecturerCode():
+    lec_name = ['BB', 'SP', 'ML', 'DMG', 'SLS', 'JJ', 'YB', 'AS','BK','SKS', 'DG', 'RS', 'PPB', 'SKR','DK','RG', 'PL', 'SS','PG','PS','RP','AK','CD','MLP','BRM','RPD','NRB', 'TEST','RS']
+    lec_Id =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
 
+    return lec_name, lec_Id
 

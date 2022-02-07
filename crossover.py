@@ -240,11 +240,14 @@ def partial_crossover(lst1, lst2, lab_len,batch):
             score = calcFitness(chk,batch) 
             #print(score)
             overal_score += score
-      
+
+        scoreconflict=lec_checkconflict(routine_offspring, batch)
+        overal_score=overal_score+scoreconflict
+        
         if batch != 2075:
             with open('file4.txt','rb') as f:
                 routine_2075=pickle.load(f) 
-            scoreconflict=lec_checkconflict(routine_2075,routine_offspring)
+            scoreconflict=lec_checkconflict(routine_offspring, batch)
             overal_score=overal_score+scoreconflict
             scoreconflict1=lab_checkconflict(routine_2075,routine_offspring)
             overal_score=overal_score+scoreconflict1

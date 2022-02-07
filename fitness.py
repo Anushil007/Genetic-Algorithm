@@ -51,7 +51,7 @@ def calcFitness(chk,batch):
     mylist2_2 = np.array(mylist2_2)
     mylist2_2 = mylist2_2.flatten()
     # print(mylist2_2)
-    
+
     for i in range(8):
         if chk[i] in mylist2_2:
             lab_count+=1
