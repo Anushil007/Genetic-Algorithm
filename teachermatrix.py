@@ -5,7 +5,7 @@ def teacher_matrix(routine,batch):
     routine1=[]
     routine1=deepcopy(routine)
     #print(routine1)
-    codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst = LecturerCode(batch)
+    codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
     for u in range(len(codeLst)):
         teacher_mat = [[0 for j in range(8)] for i in range(6)]
         for i in range(6):

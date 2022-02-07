@@ -5,7 +5,7 @@ from copy import deepcopy
 def lab_checkconflict(routine1,routine2):
     routine1=deepcopy(routine1)
     lab_routine1 = lab_matrix(routine1,2075)
-    codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer,lab_room, lab_room_lst = LecturerCode(2075)
+    codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer,lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(2075)
     
     routine2=deepcopy(routine2)
     lab_routine2 = lab_matrix(routine2,2076)
@@ -20,7 +20,7 @@ def lab_checkconflict(routine1,routine2):
         for i in range(6):
             for j in range(8):
                 lab_routine2[u][i][j] += lab_routine1[u][i][j]
-    print(lab_routine2)
+    #print(lab_routine2)
 
 
     score=0
