@@ -2,6 +2,7 @@ import random
 import itertools
 
 # to change nested list into a one dimensional list
+
 def oneDArray(x):
     return list(itertools.chain(*x))
 
@@ -163,7 +164,7 @@ def PopulationGeneration(mylist1, mylist2, mylist3):     #this loop is for the g
                     mylist2.pop(index)
                     lst.append(x) 
                     #print(length)
-                if len(mylist1) != 0:
+                elif len(mylist1) != 0:
                     x = (random.choice(mylist1))
                     index = mylist1.index(x)
                     mylist1.pop(index)
@@ -174,13 +175,31 @@ def PopulationGeneration(mylist1, mylist2, mylist3):     #this loop is for the g
                     mylist2.pop(index)
                     lst.append(x) 
                     #print(length)
-                else:
-                    print("error")
+                # else:
+                #     pass
+            lst_1D = oneDArray(lst)
+            length=len(lst_1D)
+            if length!=8:
+                if len(mylist3) != 0:
+                    x = (random.choice(mylist3))
+                    index = mylist3.index(x)
+                    mylist3.pop(index)
+                    lst.append(x) 
+                if len(mylist3) != 0:
+                    x = (random.choice(mylist3))
+                    index = mylist3.index(x)
+                    mylist3.pop(index)
+                    lst.append(x) 
+                if len(mylist3) != 0:
+                    x = (random.choice(mylist3))
+                    index = mylist3.index(x)
+                    mylist3.pop(index)
+                    lst.append(x)
+                    
+                    
 
 
         #print((lst))
         routine.append(lst)
         lst = []
     return routine
-
-    

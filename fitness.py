@@ -1,12 +1,12 @@
 from initial_population import *
 from teacher_code import LecturerCode
+import numpy as np
+from copy import deepcopy
 #from routine_info import saveroutine
 chk=[]
 
 def calcFitness(chk,batch):
-    codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer=LecturerCode(batch)
-
-
+    codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
 
     lecCount = [0 for i in range(len(lectId))]
     a = 0
@@ -46,6 +46,19 @@ def calcFitness(chk,batch):
             #print(score)
 
     #print("this is fitness")
+    lab_count = 0
+    mylist2_2 = deepcopy(mylist2)
+    mylist2_2 = np.array(mylist2_2)
+    mylist2_2 = mylist2_2.flatten()
+    # print(mylist2_2)
+
+    for i in range(8):
+        if chk[i] in mylist2_2:
+            lab_count+=1
+        if lab_count>lab_len:
+            b=lab_count-lab_len
+            score=score-(b*10)
+        score=+score
 
     score+=(b*10)
     

@@ -6,7 +6,8 @@ import sys
 from copy import deepcopy
 import pickle
 from teacherconflict import lec_checkconflict
-
+from lab_conflict import lab_checkconflict
+from teacher_code import LecturerCode
 
 
 def oneDArray(x):
@@ -80,34 +81,27 @@ def partial_crossover(lst1, lst2, lab_len,batch):
         # lists converted to 1D
 
 
-        if lab_len == 3:
-            mylist1 = np.array(
-                [[1, 2], [3, 4], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15], [16, 17], [18, 19], [20, 21], [23, 24], [25, 26],
-                [27, 28], [29, 30], [31, 32]])  # Double Class
-            mylist1 = mylist1.flatten()
-            # print(mylist1)
-            mylist2 = np.array([[34, 35, 36], [37, 38, 39], [40, 41, 42]])  # Lab
-            mylist2 = mylist2.flatten()
-            # print(mylist2)
-
-            mylist3 = np.array([[5], [22], [33]])
-            mylist3 = mylist3.flatten()
-            # print(mylist3)
-
-        elif lab_len == 2:
-            mylist1 = np.array(
-                [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [12, 13], [14, 15], [17, 18], [19, 20], [22, 23], [26, 27], [28, 29],
-                [30, 31], [32, 33]])  # Double class
-            mylist1 = mylist1.flatten()
-            # print(mylist1)
-            mylist2 = np.array([[35, 36], [37, 38], [39, 40], [41, 42]])  # labs
-            mylist2 = mylist2.flatten()
-            # print(mylist2)
-            mylist3 = np.array([[11], [16], [21], [24], [25], [34]])  # single class
-            mylist3 = mylist3.flatten()
-            # print(mylist3)
 
 
+
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
+
+
+
+       
+        mylist1 = np.array(mylist1)
+                # Double Class
+        mylist1 = mylist1.flatten()
+        # print(mylist1)
+        mylist2 = np.array(mylist2)  # Lab
+        mylist2 = mylist2.flatten()
+        # print(mylist2)
+
+        mylist3 = np.array(mylist3)
+        mylist3 = mylist3.flatten()
+        # print(mylist3)
+
+        
         # Finding the missing class type
 
         mis_prac = []
@@ -149,12 +143,6 @@ def partial_crossover(lst1, lst2, lab_len,batch):
                         present[i][j] = 'Tut'
                         mis_tut_smp.pop(0)
 
-        # print(mis_prac_smp,"mis prac")
-        # print(mis_lec_smp,"mis prac")
-        # print(mis_tut_smp,"mis prac")
-        # print(not_present,"not present")
-        #print(present,"present")
-
         if lab_len == 2:
             for i in range(6):
                 for j in range(8):
@@ -183,7 +171,8 @@ def partial_crossover(lst1, lst2, lab_len,batch):
         if '*' in present1:
             #print("this is return")
             return [],[]
-     
+    
+    
         if lab_len == 3:
             for i in range(6):
                 #print(i)
@@ -240,12 +229,14 @@ def partial_crossover(lst1, lst2, lab_len,batch):
             score = calcFitness(chk,batch) 
             #print(score)
             overal_score += score
+
       
-        if batch != 2075:
-            with open('file4.txt','rb') as f:
-                routine_2075=pickle.load(f) 
-            scoreconflict=lec_checkconflict(routine_2075,routine_offspring)
-            overal_score=overal_score+scoreconflict
+        scoreconflict=lec_checkconflict(routine_offspring, batch,overal_score)
+        overal_score=overal_score+scoreconflict
+
+
+        scoreconflict1 = lab_checkconflict(routine_offspring, batch,overal_score)
+        overal_score=overal_score+scoreconflict1
 
         if overal_score==480:
             score_offspring_lst.append(overal_score)  
