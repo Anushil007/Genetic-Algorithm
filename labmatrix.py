@@ -8,7 +8,7 @@ def lab_matrix(routine, batch):
     codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer,lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
     for i in range(6):
         for j in range(8):
-            if routine1[i][j] <= (lab_lst[0] - len(lab_lecturer[0])):
+            if routine1[i][j] <= (lab_lst[0] - lab_len):
                 routine1[i][j] = 105
             else:
                 pass

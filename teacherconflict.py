@@ -5,14 +5,13 @@ from teacher_code import allLecturerCode
 import pickle
 import os
 from lab_conflict import lab_checkconflict
+from labmatrix import lab_matrix
 
 def lec_checkconflict(routine1, batch,overal_score):
    # print(routine1)
-    print(overal_score)
-
     #score_from_lab,allLabMatrix=lab_checkconflict(routine1, batch,overal_score)
-    if batch==2075:
-        allLecturerMatrix = [[[0 for j in range(8)]for i in range(6)]for k in range(28)]
+    if batch==2074:
+        allLecturerMatrix = [[[0 for j in range(8)]for i in range(6)]for k in range(29)]
         with open('file6.txt','wb') as f:
             pickle.dump(allLecturerMatrix,f)
         f.close()
@@ -41,25 +40,73 @@ def lec_checkconflict(routine1, batch,overal_score):
                     
 
     lec_name, lec_Id = allLecturerCode()
+
+
+    if batch==2074:
+        allLabMatrix = [[[0 for j in range(8)]for i in range(6)]for k in range(10)]
+        with open('file7.txt','wb') as f:
+            pickle.dump(allLabMatrix,f)
+        f.close()
+    with open('file7.txt','rb') as f:
+        allLabMatrix=pickle.load(f)
+    ##print(allLabMatrix)
+    routine1=deepcopy(routine1)
+    lab_routine1 = lab_matrix(routine1,batch)
+    #print(lab_routine1)
+    codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer,lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
+  
+
+    for u in range(len(lab_room_lst)):
+        for i in range(6):
+            for j in range(8):
+                allLabMatrix[u][i][j] += lab_routine1[u][i][j]
+    #print(allLabMatrix)
+
+
+    scorelab=0
+    b=0
+    for u in range(len(allLabMatrix)):
+        for i in range(6):
+            for j in range(8):
+                a=allLabMatrix[u][i][j]
+                if a >2 and u==0:
+                    b=a-2
+                    scorelab=scorelab-(10*b)
+                elif u==9:
+                    pass
+                elif a>1 and u!=0 and u!=9: 
+                    b=a-1
+                    scorelab=scorelab-(10*b)
+
+
+                
+
+
     
-    if score==0 and overal_score==480:
+    if score==0 and scorelab==0 and overal_score==480:
         with open('file6.txt','wb') as f:
             pickle.dump(allLecturerMatrix,f)
+        f.close()
+
+        with open('file7.txt','wb') as f:
+            pickle.dump(allLabMatrix,f)
         f.close()
 
         lec_name, lec_Id = allLecturerCode()
 
         if batch==2077:
-            for i in range(28):
+            #for i in range(len(lec_Id)):
+            for i in range(2):
                 print(lec_name[i])
                 index = lec_name.index(lec_name[i])
                 print(lec_Id[i])
                 for j in range(6):
                     print(allLecturerMatrix[i][j])
 
-    print(score+overal_score)
+            print(allLabMatrix)
 
 
-    return score
+
+    return score+scorelab
     
    

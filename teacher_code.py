@@ -28,18 +28,18 @@ def LecturerCode(batch):
         mylist3 =[[15],[20],[31],[32],[33],[34]] #single period
 
     elif batch == 2074:
-        codeLst = [6,12,18,23,26,32]
-        lecCodeLst = ['SS','SP','PG','PS','RP','AK']
-        lectId = [18, 2, 19, 20, 21, 22]
-        lab_lst = [35, 39, 42]
-        lab_lecturer = [[65,66],[23,6,18], [6,32]]
-        lab_lec = [['Project'], ['PS+SS','PG+KB'], ['SS+BB','AK+KB']]
+        codeLst = [6,12,18,23,26,32,33]
+        lecCodeLst = ['SS','SP','PG','PS','RP','AK','Supervisor']
+        lectId = [18, 2, 19, 20, 21, 22,29]
+        lab_lst = [36, 39, 42]
+        lab_lecturer = [[33],[23,6,18], [6,32]]
+        lab_lec = [['Supervisor'], ['PS+SS','PG+KB'], ['SS+BB','AK+KB']]
         lab_room = [['Project', 'Project'], ['Computer','Computer'], ['Computer', 'Computer']]
         lab_room_lst = ['Computer', 'Electrical', 'Instrumentation', 'Drawing', 'Chemistry', 'Physics','Thermodynamics','Electronics','Workshop','Project']
         mylist1 = [[1,2],[3,4],[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20],[21,22],[24,25],[27,28],[29,30],[31,32]]
-        mylist2 = [[37,38,39],[40,41,42],[33,34,35]]
+        mylist2 = [[34,35,36],[37,38,39],[40,41,42]]
         lab_len = len(mylist2[0])
-        mylist3 = [[36],[23],[26]]
+        mylist3 = [[33],[23],[26]]
 
     elif batch == 2077:
         codeLst = [5, 12, 16, 19, 23, 25, 27, 28, 29, 30]
@@ -59,8 +59,8 @@ def LecturerCode(batch):
 
 
 def allLecturerCode():
-    lec_name = ['BB', 'SP', 'ML', 'DMG', 'SLS', 'JJ', 'YB', 'AS','BK','SKS', 'DG', 'RS', 'PPB', 'SKR','DK','RG', 'PL', 'SS','PG','PS','RP','AK','CD','MLP','BRM','RPD','NRB', 'TEST','RS']
-    lec_Id =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+
+    lec_name = ['BB', 'SP', 'ML', 'DMG', 'SLS', 'JJ', 'YB', 'AS','BK','SKS', 'DG', 'RS', 'PPB', 'SKR','DK','RG', 'PL', 'SS','PG','PS','RP','AK','CD','MLP','BRM','RPD','NRB', 'TEST', 'Supervisor']
+    lec_Id =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,29]
 
     return lec_name, lec_Id
-
