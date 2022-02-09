@@ -10,8 +10,7 @@ def LecturerCode(batch):
         mylist1 = [[1, 2], [3, 4], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15], [16, 17], [18, 19], [20, 21], [23, 24],[25, 26], [27, 28], [29, 30], [31, 32]]  # Double Class
         mylist2 = [[34, 35, 36], [37, 38, 39], [40, 41, 42]]  # Lab
         lab_len = len(mylist2[0])
-        mylist3 = [[5], [22], [33]]  # Single Period Class
-        
+        mylist3 = [[5], [22], [33]]  # Single Period Class     
 
     elif batch == 2076:
         codeLst = [6,10,15,20,24,28,32,33,34]
@@ -23,10 +22,10 @@ def LecturerCode(batch):
         ['DG+SKS','AS+RN'],['BB+PG','DK+RG']]
         lab_room = [['Computer','Computer'],['Instrumentation','Computer'],['Computer','Computer'],['Computer','Electrical']]
         lab_room_lst = ['Computer', 'Electrical', 'Instrumentation', 'Drawing', 'Chemistry', 'Physics','Thermodynamics','Electronics','Workshop','Project']
-        mylist1 = [[1,2],[3,4],[5,6],[7,8],[9,10],[12,13],[14,15],[17,18],[19,20],[22,23],[26,27],[28,29],[30,31],[32,33]] #Double class
+        mylist1 = [[1,2],[3,4],[5,6],[7,8],[9,10],[11,12],[13,14],[16,17],[18,19],[21,22],[23,24],[25,26],[27,28],[29,30]] #Double class
         mylist2 = [[35,36],[37,38],[39,40],[41,42]] #labs
         lab_len = len(mylist2[0])
-        mylist3 = [[11],[16],[21],[24],[25],[34]] #single period
+        mylist3 =[[15],[20],[31],[32],[33],[34]] #single period
 
     elif batch == 2074:
         codeLst = [6,12,18,23,26,32]

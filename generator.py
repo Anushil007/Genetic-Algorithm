@@ -51,7 +51,7 @@ def generator(batch):
         #     teacher_matrix(lst3)
 
 
-        overal_score = 0 
+        overal_score = 480
         chk = []
         for i in range(6): 
             chk=lst3[i]
@@ -59,19 +59,18 @@ def generator(batch):
             score = calcFitness(chk,batch) 
             #print(score)
             overal_score += score 
+
         scoreconflict=0
         scoreconflict=lec_checkconflict(lst3, batch,overal_score)
         overal_score=overal_score+scoreconflict 
-
-        scoreconflict1 = lab_checkconflict(lst3,batch,overal_score)
-        overal_score=overal_score+scoreconflict1
-
-
-
-
-        overal_routine[i] = matrix1
-       
-        score_lst.append(overal_score)
+        if overal_score==480:
+            score=[480]
+            return score,lst3
+        # scoreconflict1 = lab_checkconflict(lst3,batch,overal_score)
+        # overal_score=overal_score+scoreconflict1
+        else:
+            overal_routine[i] = matrix1
+            score_lst.append(overal_score)
 
 
 
@@ -90,6 +89,7 @@ def generator(batch):
     j = 0
     count=0
     while 480 not in score_lst and count<10:
+        #print('this is inside while')
         if 1:
             routine1_lst = []
             score1_lst = []
@@ -99,6 +99,7 @@ def generator(batch):
             #print("thus is crossover")
             c=0
             while(len(routine1_lst) == 0 and len(score1_lst)==0) and c<10:
+               # print('this is here')
                 c=c+1
                 a=routine_lst[0].copy()
                 b=routine_lst[1].copy()
@@ -106,7 +107,7 @@ def generator(batch):
 
             if len(score1_lst)==0:
                 score_lst,routine_lst=generator(batch)
-                print('this is inside if')
+               # print('this is inside if')
                 return score_lst,routine_lst
             elif len(score1_lst)==1:
                 score_lst[0]=score1_lst[0]
@@ -122,6 +123,48 @@ def generator(batch):
     return(score_lst,routine_lst)
 
 
+# score=[]
+# routine=[]
+# batch=2075
+# routine_2075=[]
+# score,routine=generator(batch)
+# x=0
+# while 480 not in score :
+#         score,routine=generator(batch)
+# if len(score)==1:
+#     print("this is right routine for 2075",routine,score)
+# else:
+#     print("this is right routine for 2075",routine[0],score)
+
+
+# batch=2076
+# score,routine=generator(batch)
+# while 480 not in score :
+#         score,routine=generator(batch)
+# if len(score)==1:
+#     print("this is right routine for 2076",routine,score)
+# else:
+#     print("this is right routine for 2076",routine[0],score)
 
 
 
+
+# batch=2074
+# score,routine=generator(batch)
+# while 480 not in score :
+#         score,routine=generator(batch)
+# if len(score)==1:
+#     print("this is right routine for 2074",routine,score)
+# else:
+#     print("this is right routine for 2074",routine[0],score)
+
+
+
+# batch=2077
+# score,routine=generator(batch)
+# while 480 not in score :
+#         score,routine=generator(batch)
+# if len(score)==1:
+#     print("this is right routine for 2077",routine,score)
+# else:
+#     print("this is right routine for 2077",routine[0],score)

@@ -34,15 +34,11 @@ def calcFitness(chk,batch):
 
     score=0
     for j in range(len(lecCount)):
-        if(lecCount[j]<=2):
-            #print(lecCount[j])
-            score+= (lecCount[j])*10  # no-conflict = 10
-            #print(score)
-        else:
+        if lecCount[j]>2:
             conflict = 0
             #print(lecCount[j])
             conflict=(lecCount[j]-2)
-            score+=(conflict*(-10))+(2*10)   # conflict = -10
+            score=score-(10*conflict)   # conflict = -10
             #print(score)
 
     #print("this is fitness")
@@ -55,12 +51,10 @@ def calcFitness(chk,batch):
     for i in range(8):
         if chk[i] in mylist2_2:
             lab_count+=1
-        if lab_count>lab_len:
-            b=lab_count-lab_len
-            score=score-(b*10)
-        score=+score
+    if lab_count>lab_len:
+        b=lab_count-lab_len
+        score=score-(b*10)
+    score=+score
 
-    score+=(b*10)
-    
     return score
      

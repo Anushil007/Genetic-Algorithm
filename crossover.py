@@ -220,8 +220,8 @@ def partial_crossover(lst1, lst2, lab_len,batch):
         #print(routine_offspring) 
         routine_two_offspring.append(routine_offspring)
         
-        chk = []
-        overal_score = 0
+        # chk = []
+        overal_score =480
         #print(routine_offspring)
         for i in range(6): 
             chk=routine_offspring[i]
@@ -235,8 +235,8 @@ def partial_crossover(lst1, lst2, lab_len,batch):
         overal_score=overal_score+scoreconflict
 
 
-        scoreconflict1 = lab_checkconflict(routine_offspring, batch,overal_score)
-        overal_score=overal_score+scoreconflict1
+        # scoreconflict1 = lab_checkconflict(routine_offspring, batch,overal_score)
+        # overal_score=overal_score+scoreconflict1
 
         if overal_score==480:
             score_offspring_lst.append(overal_score)  

@@ -36,9 +36,4 @@ def lab_checkconflict(routine1,batch,overal_score):
                     score=score-(10*b)
 
 
-    
-    if score==0 and overal_score==480:
-        with open('file7.txt','wb') as f:
-            pickle.dump(allLabMatrix,f)
-        f.close()
-    return score
+    return score,allLabMatrix
