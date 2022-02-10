@@ -1,35 +1,40 @@
 from labmatrix import lab_matrix
 from teacher_code import LecturerCode
 from copy import deepcopy
+import pickle
 
-def lab_checkconflict(routine1,routine2):
+def lab_checkconflict(routine1,batch,overal_score):
+    codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer,lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
+    if batch==2075:
+        allLabMatrix = [[[0 for j in range(8)]for i in range(6)]for k in range(lab_room_lst)]
+        with open('file7.txt','wb') as f:
+            pickle.dump(allLabMatrix,f)
+        f.close()
+    with open('file7.txt','rb') as f:
+        allLabMatrix=pickle.load(f)
+    ##print(allLabMatrix)
     routine1=deepcopy(routine1)
-    lab_routine1 = lab_matrix(routine1,2075)
-    codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer,lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(2075)
-    
-    routine2=deepcopy(routine2)
-    lab_routine2 = lab_matrix(routine2,2076)
+    lab_routine1 = lab_matrix(routine1,batch)
+    #print(lab_routine1)
+    #codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer,lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
+  
 
-    # print('This is lab routine of 2075')
-    # print(lab_routine1)
-    # print('This is lab routine of 2076')
-    # print(lab_routine2)
-
-    #for checking conflict
     for u in range(len(lab_room_lst)):
         for i in range(6):
             for j in range(8):
-                lab_routine2[u][i][j] += lab_routine1[u][i][j]
-    #print(lab_routine2)
+                allLabMatrix[u][i][j] += lab_routine1[u][i][j]
+    #print(allLabMatrix)
 
 
     score=0
-    for u in range(len(lab_routine2)):
+    b=0
+    for u in range(len(allLabMatrix)):
         for i in range(6):
             for j in range(8):
-                a=lab_routine2[u][i][j]
-                if a >= 3:
-                    b=a-1
+                a=allLabMatrix[u][i][j]
+                if a >4:
+                    b=a-4
                     score=score-(10*b)
-    return score
 
+
+    return score,allLabMatrix

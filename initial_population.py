@@ -203,5 +203,3 @@ def PopulationGeneration(mylist1, mylist2, mylist3):     #this loop is for the g
         routine.append(lst)
         lst = []
     return routine
-
-    

@@ -20,7 +20,7 @@ def generator(batch):
 
     for i in range(6):
         codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
-
+        #print(lab_len)
         routine = PopulationGeneration(mylist1, mylist2, mylist3)
 
 
@@ -51,7 +51,7 @@ def generator(batch):
         #     teacher_matrix(lst3)
 
 
-        overal_score = 0 
+        overal_score = 480
         chk = []
         for i in range(6): 
             chk=lst3[i]
@@ -59,21 +59,18 @@ def generator(batch):
             score = calcFitness(chk,batch) 
             #print(score)
             overal_score += score 
-        scoreconflict=0
-        scoreconflict=lec_checkconflict(lst3, batch)
-        overal_score=overal_score+scoreconflict 
-        if batch != 2075:
-            with open('file4.txt','rb') as f:
-                routine_2075=pickle.load(f) 
-            scoreconflict=lec_checkconflict(lst3, batch)
-            overal_score=overal_score+scoreconflict 
-            scoreconflict1 = lab_checkconflict(routine_2075, lst3)
-            overal_score=overal_score+scoreconflict1 
 
-        #print(overal_score)
-        overal_routine[i] = matrix1
-       
-        score_lst.append(overal_score)
+        scoreconflict=0
+        scoreconflict=lec_checkconflict(lst3, batch,overal_score)
+        overal_score=overal_score+scoreconflict 
+        if overal_score==480:
+            score=[480]
+            return score,lst3
+        # scoreconflict1 = lab_checkconflict(lst3,batch,overal_score)
+        # overal_score=overal_score+scoreconflict1
+        else:
+            overal_routine[i] = matrix1
+            score_lst.append(overal_score)
 
 
 
@@ -91,22 +88,26 @@ def generator(batch):
     i = 0
     j = 0
     count=0
-    while 480 not in score_lst and count<100:
+    while 480 not in score_lst and count<10:
+        #print('this is inside while')
         if 1:
             routine1_lst = []
             score1_lst = []
             a=routine_lst[0].copy()
             b=routine_lst[1].copy()
             routine1_lst, score1_lst = partial_crossover(a,b, lab_len,batch)
+            #print("thus is crossover")
             c=0
-            while(len(routine1_lst) == 0 and len(score1_lst)==0) and c<100:
+            while(len(routine1_lst) == 0 and len(score1_lst)==0) and c<10:
+               # print('this is here')
                 c=c+1
                 a=routine_lst[0].copy()
                 b=routine_lst[1].copy()
                 routine1_lst, score1_lst = partial_crossover(a,b, lab_len,batch)  
+
             if len(score1_lst)==0:
                 score_lst,routine_lst=generator(batch)
-                print('this is inside if')
+               # print('this is inside if')
                 return score_lst,routine_lst
             elif len(score1_lst)==1:
                 score_lst[0]=score1_lst[0]
@@ -120,31 +121,3 @@ def generator(batch):
             #print(count)
             #print(score_lst,routine_lst,'this is score list and routine list')
     return(score_lst,routine_lst)
-
-#for i in range(50):
-score=[]
-routine=[]
-batch=2075
-routine_2075=[]
-score,routine=generator(batch)
-while 480 not in score:
-    score,routine=generator(batch)
-print("this is right routine for 2075",routine[0])
-routine_2075=routine[0]
-with open('file4.txt','wb') as f:
-    pickle.dump(routine[0],f)
-with open('file4.txt','rb') as f:
-    routine_2075=pickle.load(f)
-
-batch=2076
-score,routine=generator(batch)
-while 480 not in score:
-    score,routine=generator(batch)
-print("this is right routine for 2076",routine[0],score)
-    #print(i)
-
-
-
-
-
-
