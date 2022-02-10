@@ -29,7 +29,6 @@ def partial_crossover(lst1, lst2, lab_len,batch):
     x=random.randint(0,5)
     lst1off.append(lst2_2[x])
     lst2_2.pop(x)
-
     lst2off.append(lst1_1[x])
     lst1_1.pop(x)
 
