@@ -98,7 +98,7 @@ def generator(batch):
             routine1_lst, score1_lst = partial_crossover(a,b, lab_len,batch)
             #print("thus is crossover")
             c=0
-            while(len(routine1_lst) == 0 and len(score1_lst)==0) and c<100:
+            while(len(routine1_lst) == 0 and len(score1_lst)==0) and c<2:
                # print('this is here')
                 c=c+1
                 a=routine_lst[0].copy()
@@ -107,9 +107,8 @@ def generator(batch):
 
             if len(score1_lst)==0:
                 score_lst,routine_lst=generator(batch)
-               # print('this is inside if')
                 return score_lst,routine_lst
-            elif len(score1_lst)==1:
+            if len(score1_lst)==1:
                 score_lst[0]=score1_lst[0]
                 routine_lst[0]= routine1_lst[0]
             else:

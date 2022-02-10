@@ -11,7 +11,7 @@ def lec_checkconflict(routine1, batch,overal_score):
 
     lec_name, lec_Id = allLecturerCode()
     #score_from_lab,allLabMatrix=lab_checkconflict(routine1, batch,overal_score)
-    if batch==2074:
+    if batch==2079:
         allLecturerMatrix = [[[0 for j in range(8)]for i in range(6)]for k in range(len(lec_Id))]
         with open('file6.txt','wb') as f:
             pickle.dump(allLecturerMatrix,f)
@@ -72,7 +72,7 @@ def lec_checkconflict(routine1, batch,overal_score):
     
 
 
-    if batch==2074:
+    if batch==2079:
         allLabMatrix = [[[0 for j in range(8)]for i in range(6)]for k in range(len(lab_room_lst))]
         with open('file7.txt','wb') as f:
             pickle.dump(allLabMatrix,f)
@@ -115,7 +115,7 @@ def lec_checkconflict(routine1, batch,overal_score):
 
         lec_name, lec_Id = allLecturerCode()
 
-        if batch==2078:
+        if batch==2080:
             #for i in range(len(lec_Id)):
             for i in range(len(lec_Id)):
                 print(lec_name[i])

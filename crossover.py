@@ -242,6 +242,9 @@ def partial_crossover(lst1, lst2, lab_len,batch):
             return routine_two_offspring,score_offspring_lst
         score_offspring_lst.append(overal_score)
 
+        # else:
+        #     random.shuffle()
+
     return routine_two_offspring, score_offspring_lst
     
 

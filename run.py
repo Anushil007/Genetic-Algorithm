@@ -3,41 +3,64 @@ import sys
 def call():
     score=[]
     routine=[]
+
+    x=0
+    batch=2079
+    score,routine=generator(batch)
+    while 480 not in score:
+        if x<50:
+            print(x ,batch)
+            x=x+1
+            score,routine=generator(batch)
+            
+        else:
+            call()
+    if len(score)==1:
+        print("this is right routine for 2079",routine,score)
+    else:
+        print("this is right routine for 2079",routine[0],score)
+
+
+
+
+    x=0
+    batch=2076
+    score,routine=generator(batch)
+    while 480 not in score:
+        if x<30:
+            x=x+1
+            print(x,batch)
+            score,routine=generator(batch)
+        else:
+            call()
+    if len(score)==1:
+        print("this is right routine for 2076",routine,score)
+    else:
+        print("this is right routine for 2076",routine[0],score)
+
+    x=0
     batch=2074
     routine_2075=[]
     score,routine=generator(batch)
-    x=0
     while 480 not in score :
+        if x<50:
+            print(x ,batch)
+            x=x+1
             score,routine=generator(batch)
+        else:
+            call()
+  
     if len(score)==1:
         print("this is right routine for 2074",routine,score)
     else:
         print("this is right routine for 2074",routine[0],score)
-
-
-
-    # x=0
-    # batch=2079
-    # score,routine=generator(batch)
-    # while 480 not in score:
-    #     if x<10:
-    #         print(x)
-    #         x=x+1
-    #         score,routine=generator(batch)
-            
-    #     else:
-    #         call()
-    # if len(score)==1:
-    #     print("this is right routine for 2079",routine,score)
-    # else:
-    #     print("this is right routine for 2079",routine[0],score)
-    
 
     x=0
     batch=2075
     score,routine=generator(batch)
     while 480 not in score :
         if x<10:
+            print(x ,batch)
             x=x+1
             score,routine=generator(batch)
         else:
@@ -49,28 +72,15 @@ def call():
     
 
 
-    x=0
-    batch=2076
-    score,routine=generator(batch)
-    while 480 not in score:
-        if x<100:
-            x=x+1
-            score,routine=generator(batch)
-        else:
-            call()
-    if len(score)==1:
-        print("this is right routine for 2076",routine,score)
-    else:
-        print("this is right routine for 2076",routine[0],score)
     
-
 
 
     x=0
     batch=2077
     score,routine=generator(batch)
     while 480 not in score:
-        if x<60:
+        if x<120:
+            print(x,batch)
             x=x+1
             score,routine=generator(batch)
             
@@ -90,6 +100,7 @@ def call():
     while 480 not in score:
         if x<120:
             x=x+1
+            print(x,batch)
             score,routine=generator(batch)
             
         else:
@@ -107,6 +118,7 @@ def call():
     while 480 not in score:
         if x<200:
             x=x+1
+            print(x,batch)
             score,routine=generator(batch)
             
         else:
@@ -117,14 +129,17 @@ def call():
         print("this is right routine for 2080",routine[0],score)
 
 
+
+
+    
+    x=0
     batch=2078
     score,routine=generator(batch)
     while 480 not in score:
         if x<200:
-            print(x)
+            print(x,batch)
             x=x+1
-            score,routine=generator(batch)
-            
+            score,routine=generator(batch)  
         else:
             call()
     if len(score)==1:

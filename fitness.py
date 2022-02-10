@@ -47,14 +47,14 @@ def calcFitness(chk,batch):
     mylist2_2 = np.array(mylist2_2)
     mylist2_2 = mylist2_2.flatten()
     # print(mylist2_2)
-
+    score_lab=0
     for i in range(8):
         if chk[i] in mylist2_2:
             lab_count+=1
     if lab_count>lab_len:
         b=lab_count-lab_len
-        score=score-(b*10)
-    score=+score
+        score_lab=score_lab-(b*10)
+    score=score+score_lab
 
     return score
      
