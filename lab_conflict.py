@@ -32,7 +32,7 @@ def lab_checkconflict(routine1,batch,overal_score):
         for i in range(6):
             for j in range(8):
                 a=allLabMatrix[u][i][j]
-                if a >4:
+                if a > 4:
                     b=a-4
                     score=score-(10*b)
 

@@ -53,6 +53,8 @@ def partial_crossover(lst1, lst2, lab_len,batch):
     for i in range(2):
         routine = []
         routine = offspring[i]
+        # if batch == 2079:
+        #     random.shuffle(routine)
         #routine=[[22, 23, 17, 18, 100, 28, 29, 34], [28, 29, 28, 29, 100, 35, 36, 34], [9, 10, 30, 31, 100, 37, 38, 25], [41, 42, 19, 20, 100, 12, 13, 11], [14, 15, 7, 8, 100, 39, 40, 24], [17, 18, 1, 2, 100, 22, 23, 21]]
         routinecheck=[]
         routinecheck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,

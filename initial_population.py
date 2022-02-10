@@ -195,11 +195,26 @@ def PopulationGeneration(mylist1, mylist2, mylist3):     #this loop is for the g
                     index = mylist3.index(x)
                     mylist3.pop(index)
                     lst.append(x)
+            
+        lst_initial=lst[:]
+        random.shuffle(lst)
+        random.shuffle(lst)
+        lst_check=oneDArray(lst)
+        for i in range(10):
+            if (lst_check[3]==100 or lst_check[4]==100):
+                routine.append(lst)
+                x=100
+                break
+            else:
+                random.shuffle(lst)
+                lst_check=oneDArray(lst) 
+        if x!=100:
+            routine.append(lst_initial)
                     
                     
 
 
         #print((lst))
-        routine.append(lst)
+        # routine.append(lst)
         lst = []
     return routine
