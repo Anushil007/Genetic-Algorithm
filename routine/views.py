@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from routine.models import Computer_Second
-from .forms import Computer1ModelForm,Computer2ModelForm,Computer3ModelForm,Computer4ModelForm,Electrical1ModelForm, Electrical2ModelForm, Electrical3ModelForm, Electrical4ModelForm
+from routine.models import Computer_Second, Labroom
+from .forms import Computer1ModelForm,Computer2ModelForm,Computer3ModelForm,Computer4ModelForm,Electrical1ModelForm, Electrical2ModelForm, Electrical3ModelForm, Electrical4ModelForm,LabroomModelForm
 from .packages.run import call
 from .packages.teacher_code import LecturerCode
 import sys
@@ -19,8 +19,15 @@ def generate_routine(request):
 
 def generate_code(request):
     if 'runserver' in sys.argv:
-        LecturerCode(376)
+        LecturerCode(274)
         return HttpResponse("Code is generated")
+
+def addLabroom(request):
+    if request.method == "POST":
+        form = LabroomModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, 'routine/lab_room.html')
 
 def computerBatch(request):
     return render(request, 'routine/year_computer.html')
@@ -34,8 +41,14 @@ def computerData_first(request):
     # print('\n'*10, form)
         if form.is_valid():
             form.save()
+    labroom = Labroom.objects.all()
+    form = LabroomModelForm()
+    context = {
+        'labrooms':labroom,
+        'form':form,
+    }
 # return redirect('/')
-    return render(request, 'routine/computer_first.html')
+    return render(request, 'routine/computer_first.html', context)
 
 
 def computerData_second(request):

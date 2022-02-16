@@ -5,6 +5,7 @@ urlpatterns = [
     path('',views.homepage, name='homepage'),
     path('computer_batch', views.computerBatch, name='computer_batch'),
     path('electrical_batch', views.electricalBatch, name='electrical_batch'),
+    path('add_labroom', views.addLabroom, name = 'add_labroom'),
     path('addComputer_first', views.computerData_first, name='addComputerfirst'),
     path('addComputer_second', views.computerData_second, name='addComputersecond'),
     path('addComputer_third', views.computerData_third, name='addComputerthird'),
