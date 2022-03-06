@@ -1,6 +1,6 @@
 from .generator import generator
 import sys
-
+from .pdf_gen import make_pdf
 def call():
     score=[]
     routine=[]
@@ -17,9 +17,10 @@ def call():
             call()
     if len(score)==1:
         print("This is right routine for Electrical Second Year:",routine,score)
+        make_pdf(routine,batch)
     else:
         print("This is right routine for Electrical Second Year:",routine[0],score)
-
+        make_pdf(routine[0],batch)
 
 
 
@@ -35,12 +36,13 @@ def call():
             call()
     if len(score)==1:
         print("This is right routine for Computer Second Year:",routine,score)
+        make_pdf(routine,batch)
     else:
         print("This is right routine for Computer Second Year:",routine[0],score)
+        make_pdf(routine[0],batch)
 
     x=0
     batch=374
-    routine_2075=[]
     score,routine=generator(batch)
     while 480 not in score :
         if x<50:
@@ -52,8 +54,10 @@ def call():
   
     if len(score)==1:
         print("This is right routine for Computer Fourth Year:",routine,score)
+        make_pdf(routine,batch)
     else:
         print("This is right routine for Computer Fourth Year:",routine[0],score)
+        make_pdf(routine[0],batch)
 
     x=0
     batch=375
@@ -67,9 +71,10 @@ def call():
             call()
     if len(score)==1:
         print("This is right routine for Computer Third Year:",routine,score)
+        make_pdf(routine,batch)
     else:
         print("This is right routine for Computer Third Year:",routine[0],score)
-    
+        make_pdf(routine[0],batch)
 
 
     
@@ -88,8 +93,10 @@ def call():
             call()
     if len(score)==1:
         print("This is right routine for Computer First Year:",routine,score)
+        make_pdf(routine,batch)
     else:
         print("This is right routine for Computer First Year:",routine[0],score)
+        make_pdf(routine[0],batch)
 
 
 
@@ -107,8 +114,10 @@ def call():
             call()
     if len(score)==1:
         print("This is right routine for Electrical Fourth Year:",routine,score)
+        make_pdf(routine,batch)
     else:
         print("This is right routine for Electrical Fourth Year:",routine[0],score)
+        make_pdf(routine[0],batch)
 
 
     
@@ -125,8 +134,10 @@ def call():
             call()
     if len(score)==1:
         print("This is right routine for Electrical Third Year:",routine,score)
+        make_pdf(routine,batch)
     else:
         print("This is right routine for Electrical Third Year:",routine[0],score)
+        make_pdf(routine[0],batch)
 
 
 
@@ -144,6 +155,7 @@ def call():
             call()
     if len(score)==1:
         print("This is right routine for Electrical First Year:",routine,score)
+        make_pdf(routine,batch)
     else:
         print("This is right routine for Electrical First Year:",routine[0],score)
-    
+        make_pdf(routine[0],batch)

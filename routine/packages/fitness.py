@@ -8,25 +8,44 @@ chk=[]
 def calcFitness(chk,batch):
     codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
 
+    # print(codeLst)
+    # print(lecCodeLst)
+    # print(lectId)
+    # print(lab_room)
+    # print(lab_lecturer)
+    # print(lab_lst)
+    # print(mylist1)
+    # print(mylist3)
+    # print(mylist2)
+    maxm = max(codeLst)
+    # print(chk)
+
     lecCount = [0 for i in range(len(lectId))]
     a = 0
     b = 0
     j = 0
     while(j <= (len(lectId)-1)):
+        #print(j)
         if(a>7):
             break
-        elif(chk[a] <= codeLst[j]):
-            lecCount[j] += 1
-            #print(lecCount)
-            j=0
-            a=a+1
-        elif chk[a] >=(codeLst[-1]+1):
-            b += 1
-            a += 1
-            j=0
-            pass
+        #print(codeLst[j])
+        elif codeLst[j] != 0:
+           #print(chk[a])
+            if(chk[a] <= codeLst[j]):
+                lecCount[j] += 1
+                #print(lecCount)
+                j=0
+                a=a+1
+            elif chk[a] >=(maxm+1):
+                b += 1
+                a += 1
+                j=0
+                pass
         
-        else: 
+            else: 
+                j += 1
+                pass
+        else:
             j += 1
             pass
 

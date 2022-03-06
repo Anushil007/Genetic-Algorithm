@@ -1,10 +1,17 @@
+from email import message
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseRedirect 
+from django.contrib import messages
+from matplotlib.style import context
 from routine.models import Computer_Second, Labroom
 from .forms import Computer1ModelForm,Computer2ModelForm,Computer3ModelForm,Computer4ModelForm,Electrical1ModelForm, Electrical2ModelForm, Electrical3ModelForm, Electrical4ModelForm,LabroomModelForm
 from .packages.run import call
 from .packages.teacher_code import LecturerCode
+
+
 import sys
+
 
 # Create your views here.
 def homepage(request):
@@ -13,13 +20,22 @@ def homepage(request):
 def generate_routine(request):
     print(sys.argv)
     if 'runserver' in sys.argv:
-        call()   
-        print(sys.argv)        
-        return HttpResponse("Routine is generated")
+        call()  
+        print(sys.argv)  
+        # data=r"D:\Minor Project on Automated Timetable Generator\multiple database\output.pdf"      
+        # context = {
+        #     'output' : data
+        # }
+        with open('D:\Minor Project on Automated Timetable Generator\multiple database\output.pdf', 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'filename = output.pdf'
+            return response
+
+        
 
 def generate_code(request):
     if 'runserver' in sys.argv:
-        LecturerCode(274)
+        LecturerCode(377)
         return HttpResponse("Code is generated")
 
 def addLabroom(request):
@@ -38,79 +54,118 @@ def electricalBatch(request):
 def computerData_first(request):
     if request.method == "POST":
         form = Computer1ModelForm(request.POST)
-    # print('\n'*10, form)
-        if form.is_valid():
-            form.save()
-    labroom = Labroom.objects.all()
-    form = LabroomModelForm()
-    context = {
-        'labrooms':labroom,
-        'form':form,
-    }
+        period = int(form['Lecturer_Period'].value())
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(377)
+        value = period + max(lab_lst)
+        if value <= 42:
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your data has been entered into the database.')
+        else:
+            messages.error(request, 'You cant add more lecturer.')
 # return redirect('/')
-    return render(request, 'routine/computer_first.html', context)
+    return render(request, 'routine/computer_first.html')
 
 
 def computerData_second(request):
     if request.method == "POST":
         form = Computer2ModelForm(request.POST)
-    
-    # print('\n'*10, form)
-        if form.is_valid():
-            form.save()
+        period = int(form['Lecturer_Period'].value())
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(376)
+        value = period + max(lab_lst)
+        if value <= 42:
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your data has been entered into the database.')
+        else:
+            messages.error(request, 'You cant add more lecturer.')
 # return redirect('/')
     return render(request, 'routine/computer_second.html')
 
 def computerData_third(request):
     if request.method == "POST":
         form = Computer3ModelForm(request.POST)
-    # print('\n'*10, form)
-        if form.is_valid():
-            form.save()
-# return redirect('/')
+        period = int(form['Lecturer_Period'].value())
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(375)
+        value = period + max(lab_lst)
+        if value <= 42:
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your data has been entered into the database.')
+        else:
+            messages.error(request, 'You cant add more lecturer.')
     return render(request, 'routine/computer_third.html')
 
 def computerData_fourth(request):
     if request.method == "POST":
         form = Computer4ModelForm(request.POST)
-    # print('\n'*10, form)
-        if form.is_valid():
-            form.save()
-# return redirect('/')
+        period = int(form['Lecturer_Period'].value())
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(374)
+        value = period + max(lab_lst)
+        if value <= 42:
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your data has been entered into the database.')
+        else:
+            messages.error(request, 'You cant add more lecturer.')
     return render(request, 'routine/computer_fourth.html')
 
 def electricalData_first(request):
     if request.method == "POST":
         form = Electrical1ModelForm(request.POST)
-    # print('\n'*10, form)
-        if form.is_valid():
-            form.save()
+        period = int(form['Lecturer_Period'].value())
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(277)
+        value = period + max(lab_lst)
+        if value <= 42:
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your data has been entered into the database.')
+        else:
+            messages.error(request, 'You cant add more lecturer.')
 
     return render(request, 'routine/electrical_first.html')
 
 def electricalData_second(request):
     if request.method == "POST":
         form = Electrical2ModelForm(request.POST)
-    # print('\n'*10, form)
-        if form.is_valid():
-            form.save()
+        period = int(form['Lecturer_Period'].value())
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(276)
+        value = period + max(lab_lst)
+        if value <= 42:
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your data has been entered into the database.')
+        else:
+            messages.error(request, 'You cant add more lecturer.')
 
     return render(request, 'routine/electrical_second.html')
 
 def electricalData_third(request):
     if request.method == "POST":
         form = Electrical3ModelForm(request.POST)
-    # print('\n'*10, form)
-        if form.is_valid():
-            form.save()
+        period = int(form['Lecturer_Period'].value())
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(275)
+        value = period + max(lab_lst)
+        if value <= 42:
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your data has been entered into the database.')
+        else:
+            messages.error(request, 'You cant add more lecturer.')
 
     return render(request, 'routine/electrical_third.html')
 
 def electricalData_fourth(request):
     if request.method == "POST":
         form = Electrical4ModelForm(request.POST)
-    # print('\n'*10, form)
-        if form.is_valid():
-            form.save()
+        period = int(form['Lecturer_Period'].value())
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(274)
+        value = period + max(lab_lst)
+        if value <= 42:
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your data has been entered into the database.')
+        else:
+            messages.error(request, 'You cant add more lecturer.')
 
     return render(request, 'routine/electrical_fourth.html')

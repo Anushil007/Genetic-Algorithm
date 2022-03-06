@@ -248,7 +248,7 @@ def LecturerCode(batch):
 
         # print(mylist1)
         # print(mylist3)
-        #print(mylist2)
+        # print(mylist2)
 
 
         #mylist1 =[[1, 2], [3, 4], [6,7], [8,9], [10,11], [13, 14], [15, 16], [17, 18], [20, 21], [22, 23], [24, 25], [26, 27]]
@@ -342,10 +342,10 @@ def LecturerCode(batch):
         # print(mylist2)
 
 
-        lab_lst =[36,39,42]
-        lab_lecturer=[[37,48,47,46],[49,30,10],[35,36,16,49]]
+        #lab_lst =[36,39,42]
+        #lab_lecturer=[[37,48,47,46],[49,30,10],[35,36,16,49]]
         lab_lec =[['RuG+SL','NS+AD'],['IMS+RN','SKS'],['TN+GT','RG+IMS']]
-        lab_room=[['Electrical','Hydropower'],['Computer','Electrical'],['Computer','Electrical']]
+        #lab_room=[['Electrical','Hydropower'],['Computer','Electrical'],['Computer','Electrical']]
         lab_room_lst = ['Computer', 'Electrical', 'Instrumentation', 'Drawing', 'Chemistry', 'Physics','Thermodynamics','Electronics','Workshop','Project', 'Hydropower', 'Switchgear', 'Class1', 'Class2']
 
 
