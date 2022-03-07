@@ -9,7 +9,7 @@ import numpy as np
 
 def make_pdf(routine1,batch):
     codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(batch)
-    Lecturer_Sub, lab, lab_leccode = pdf_code(batch)
+    Lecturer_Sub, lab, lab_lecturer_code = pdf_code(batch,lecCodeLst,lectId)
     routine_str = []
     routine =deepcopy(routine1)
     
@@ -38,7 +38,7 @@ def make_pdf(routine1,batch):
                         #     if k in lectId:
                         #         index = lectId.index(k)
                         #         teacher_routine[index] [i][j] = 1
-                        routine[i][j] =  '\n' + lab[u] + '(Lab)' + '\n ' + lab_leccode[u]       
+                        routine[i][j] =  '\n' + lab[u]  + '\n' + lab_lecturer_code[u]       
                     else:
                         pass
 
@@ -51,8 +51,22 @@ def make_pdf(routine1,batch):
     
 
     
-
-    title = 'Routine for batch '+ str(batch)
+    if batch == 377:
+        title = 'Routine for Computer First Year'
+    elif batch == 376:
+        title = 'Routine for Computer Second Year'
+    elif batch == 375:
+        title = 'Routine for Computer Third Year'
+    elif batch == 374:
+        title = 'Routine for Computer Fourth Year'
+    elif batch == 277:
+        title = 'Routine for Electrical First Year'
+    elif batch == 276:
+        title = 'Routine for Electrical Second Year'
+    elif batch == 275:
+        title = 'Routine for Electrical Third Year'
+    else:
+        title = 'Routine for Electrical Fourth Year'
 
     days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
 

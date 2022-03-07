@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from matplotlib.style import context
 from routine.models import Computer_Second, Labroom
+from routine.packages.pdf_code import pdf_code
 from .forms import Computer1ModelForm,Computer2ModelForm,Computer3ModelForm,Computer4ModelForm,Electrical1ModelForm, Electrical2ModelForm, Electrical3ModelForm, Electrical4ModelForm,LabroomModelForm
 from .packages.run import call
 from .packages.teacher_code import LecturerCode
@@ -35,7 +36,8 @@ def generate_routine(request):
 
 def generate_code(request):
     if 'runserver' in sys.argv:
-        LecturerCode(377)
+        LecturerCode(274)
+        
         return HttpResponse("Code is generated")
 
 def addLabroom(request):
@@ -55,9 +57,10 @@ def computerData_first(request):
     if request.method == "POST":
         form = Computer1ModelForm(request.POST)
         period = int(form['Lecturer_Period'].value())
-        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(377)
-        value = period + max(lab_lst)
-        if value <= 42:
+        codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(377)  
+        if lab_lst != []:          
+            period = period + max(lab_lst)
+        if period <= 42:
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your data has been entered into the database.')
@@ -72,8 +75,9 @@ def computerData_second(request):
         form = Computer2ModelForm(request.POST)
         period = int(form['Lecturer_Period'].value())
         codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(376)
-        value = period + max(lab_lst)
-        if value <= 42:
+        if lab_lst != []:          
+            period = period + max(lab_lst)
+        if period <= 42:
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your data has been entered into the database.')
@@ -87,8 +91,9 @@ def computerData_third(request):
         form = Computer3ModelForm(request.POST)
         period = int(form['Lecturer_Period'].value())
         codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(375)
-        value = period + max(lab_lst)
-        if value <= 42:
+        if lab_lst != []:          
+            period = period + max(lab_lst)
+        if period <= 42:
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your data has been entered into the database.')
@@ -101,8 +106,9 @@ def computerData_fourth(request):
         form = Computer4ModelForm(request.POST)
         period = int(form['Lecturer_Period'].value())
         codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(374)
-        value = period + max(lab_lst)
-        if value <= 42:
+        if lab_lst != []:          
+            period = period + max(lab_lst)
+        if period <= 42:
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your data has been entered into the database.')
@@ -115,8 +121,9 @@ def electricalData_first(request):
         form = Electrical1ModelForm(request.POST)
         period = int(form['Lecturer_Period'].value())
         codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(277)
-        value = period + max(lab_lst)
-        if value <= 42:
+        if lab_lst != []:          
+            period = period + max(lab_lst)
+        if period <= 42:
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your data has been entered into the database.')
@@ -130,8 +137,9 @@ def electricalData_second(request):
         form = Electrical2ModelForm(request.POST)
         period = int(form['Lecturer_Period'].value())
         codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(276)
-        value = period + max(lab_lst)
-        if value <= 42:
+        if lab_lst != []:          
+            period = period + max(lab_lst)
+        if period <= 42:
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your data has been entered into the database.')
@@ -145,8 +153,9 @@ def electricalData_third(request):
         form = Electrical3ModelForm(request.POST)
         period = int(form['Lecturer_Period'].value())
         codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(275)
-        value = period + max(lab_lst)
-        if value <= 42:
+        if lab_lst != []:          
+            period = period + max(lab_lst)
+        if period <= 42:
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your data has been entered into the database.')
@@ -160,8 +169,9 @@ def electricalData_fourth(request):
         form = Electrical4ModelForm(request.POST)
         period = int(form['Lecturer_Period'].value())
         codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(274)
-        value = period + max(lab_lst)
-        if value <= 42:
+        if lab_lst != []:          
+            period = period + max(lab_lst)
+        if period <= 42:
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your data has been entered into the database.')

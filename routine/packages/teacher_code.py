@@ -28,7 +28,10 @@ def LecturerCode(batch):
 
         #mylist1 = [[1, 2], [3, 4], [6, 7], [8, 9], [10, 11], [12, 13], [14, 15], [16, 17], [18, 19], [20, 21], [23, 24],[25, 26], [27, 28], [29, 30], [31, 32]]  # Double Class
         #mylist2 = [[34, 35, 36], [37, 38, 39], [40, 41, 42]]  # Lab
-        lab_len = len(mylist2[0])
+        if mylist2 != []:
+            lab_len = len(mylist2[0])
+        else:
+            lab_len = 0
         #mylist3 = [[5], [22], [33]]  # Single Period Class
 
 
@@ -82,58 +85,37 @@ def LecturerCode(batch):
         lab_room = []
         lab_lecturer = []
         lab_lst = []
-        maxm = max(codeLst)
-        for i in range(len(lab_room1)):
-            lst1 = []
-            lst2 = []
-            lst1.append(lab_room1[i])
-            lab_room.append(input_lst(input_lst(lst1)))
-            lst2.append(lab_lecturer1[i])
-            x = input_lst(lst2)
-            lab_lecturer.append(list(map(int, x)))
-
-            lab_lst.append(maxm+2)
-            maxm = maxm + 2
-
-
         mylist1 = []
         mylist3 = []
         mylist2 = []
-        period = 0
-        for i in range(len(codeLst)):
-            #print(period)
-            m = codeLst[i]
-            #print(m)
-            if m != 0:
-                value = codeLst1[i]
-                #print(value)
-                #print(lectId[i])
-                if lectId[i] == 4:
-                    while(period < m):
-                        if ((m-period) > 2):
-                            period_lec_list = []
-                            period += 1
-                            period_lec_list.append(period)
-                            period += 1
-                            period_lec_list.append(period)
-                            mylist1.append(period_lec_list)
-                        else:
+        if codeLst != []:
+            maxm = max(codeLst)
+            for i in range(len(lab_room1)):
+                lst1 = []
+                lst2 = []
+                lst1.append(lab_room1[i])
+                lab_room.append(input_lst(input_lst(lst1)))
+                lst2.append(lab_lecturer1[i])
+                x = input_lst(lst2)
+                lab_lecturer.append(list(map(int, x)))
 
-                            period_tut_list = []
-                            period += 1
-                            period_tut_list.append(period)
-                            mylist3.append(period_tut_list)
-                            period_tut_list = []
-                            period += 1
-                            period_tut_list.append(period)
-                            mylist3.append(period_tut_list)
+                lab_lst.append(maxm+2)
+                maxm = maxm + 2
 
-                else:
-                    y = value % 2
-                    if y == 1:
-                        #print(period)
+
+            
+            period = 0
+            for i in range(len(codeLst)):
+                #print(period)
+                m = codeLst[i]
+                #print(m)
+                if m != 0:
+                    value = codeLst1[i]
+                    #print(value)
+                    #print(lectId[i])
+                    if lectId[i] == 4:
                         while(period < m):
-                            if ((m-period) > 1):
+                            if ((m-period) > 2):
                                 period_lec_list = []
                                 period += 1
                                 period_lec_list.append(period)
@@ -141,36 +123,59 @@ def LecturerCode(batch):
                                 period_lec_list.append(period)
                                 mylist1.append(period_lec_list)
                             else:
-                                period += 1
+
                                 period_tut_list = []
+                                period += 1
                                 period_tut_list.append(period)
                                 mylist3.append(period_tut_list)
+                                period_tut_list = []
+                                period += 1
+                                period_tut_list.append(period)
+                                mylist3.append(period_tut_list)
+
                     else:
-                        #print(period)
-                        while(period < m):
-                            if ((m-period) > 1):
-                                period_lec_list = []
-                                period += 1
-                                period_lec_list.append(period)
-                                period += 1
-                                period_lec_list.append(period)
-                                mylist1.append(period_lec_list)
+                        y = value % 2
+                        if y == 1:
+                            #print(period)
+                            while(period < m):
+                                if ((m-period) > 1):
+                                    period_lec_list = []
+                                    period += 1
+                                    period_lec_list.append(period)
+                                    period += 1
+                                    period_lec_list.append(period)
+                                    mylist1.append(period_lec_list)
+                                else:
+                                    period += 1
+                                    period_tut_list = []
+                                    period_tut_list.append(period)
+                                    mylist3.append(period_tut_list)
+                        else:
+                            #print(period)
+                            while(period < m):
+                                if ((m-period) > 1):
+                                    period_lec_list = []
+                                    period += 1
+                                    period_lec_list.append(period)
+                                    period += 1
+                                    period_lec_list.append(period)
+                                    mylist1.append(period_lec_list)
 
 
-                period = m
-            else:
-                pass
+                    period = m
+                else:
+                    pass
 
-        for i in range(len(lab_lst)):
-            m = lab_lst[i]
-            while(period < m):
-                if ((m-period) > 1):
-                    period_lab_list = []
-                    period += 1
-                    period_lab_list.append(period)
-                    period += 1
-                    period_lab_list.append(period)
-                    mylist2.append(period_lab_list)        
+            for i in range(len(lab_lst)):
+                m = lab_lst[i]
+                while(period < m):
+                    if ((m-period) > 1):
+                        period_lab_list = []
+                        period += 1
+                        period_lab_list.append(period)
+                        period += 1
+                        period_lab_list.append(period)
+                        mylist2.append(period_lab_list)        
         
         # print(codeLst)
         # print(lecCodeLst)
@@ -186,7 +191,10 @@ def LecturerCode(batch):
 
         #mylist1 = [[1,2],[3,4],[5,6],[7,8],[9,10],[11,12],[13,14],[16,17],[18,19],[21,22],[23,24],[25,26],[27,28],[29,30]] #Double class
         #mylist2 = [[35,36],[37,38],[39,40],[41,42]] #labs
-        lab_len = len(mylist2[0])
+        if mylist2 != []:
+            lab_len = len(mylist2[0])
+        else:
+            lab_len = 0
         #mylist3 = [[15],[20],[31],[32],[33],[34]] #single period
 
     elif batch == 374:
@@ -219,7 +227,10 @@ def LecturerCode(batch):
 
         #mylist1 = [[1,2],[3,4],[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20],[21,22],[24,25],[27,28],[29,30],[31,32]]
         #mylist2 = [[37,38,39],[40,41,42],[34,35,36]]
-        lab_len = len(mylist2[0])
+        if mylist2 != []:
+            lab_len = len(mylist2[0])
+        else:
+            lab_len = 0
         #mylist3 = [[33],[23],[26]]
 
     elif batch == 377:
@@ -253,7 +264,10 @@ def LecturerCode(batch):
 
         #mylist1 =[[1, 2], [3, 4], [6,7], [8,9], [10,11], [13, 14], [15, 16], [17, 18], [20, 21], [22, 23], [24, 25], [26, 27]]
         #mylist2 =[[31,32,33], [34,35,36], [37,38,39], [40,41,42]]
-        lab_len = len(mylist2[0])
+        if mylist2 != []:
+            lab_len = len(mylist2[0])
+        else:
+            lab_len = 0
         #mylist3= [[5],[12],[19], [28], [29], [30]]
 
 
@@ -285,7 +299,10 @@ def LecturerCode(batch):
 
         #mylist1 =[[1, 2], [3, 4], [5,6], [7,8], [9,10], [12,13], [14,15], [16, 17], [19,20], [21, 22], [23, 24], [25, 26]]
         #mylist2 =[[31,32,33], [34,35,36], [37,38,39], [40,41,42]]
-        lab_len = len(mylist2[0])
+        if mylist2 != []:
+            lab_len = len(mylist2[0])
+        else:
+            lab_len = 0
         #mylist3= [[11],[18],[27], [28], [29], [30]]
 
 
@@ -319,7 +336,10 @@ def LecturerCode(batch):
 
         #mylist1=[[1,2],[3,4],[5,6],[7,8],[9,10],[12,13],[14,15],[16,17],[18,19],[21,22],[23,24],[25,26],[27,28],[29,30],[31,32]]
         #mylist2=[[34,35,36],[37,38,39],[40,41,42]]
-        lab_len = len(mylist2[0])
+        if mylist2 != []:
+            lab_len = len(mylist2[0])
+        else:
+            lab_len = 0
         #mylist3=[[11],[20],[33]]
 
     # for elec 3rd year
@@ -351,7 +371,10 @@ def LecturerCode(batch):
 
         #mylist1=[[1,2],[3,4],[5,6],[7,8],[9,10],[12,13],[14,15],[17,18],[19,20],[21,22],[23,24],[25,26],[27,28],[29,30],[31,32]]
         #mylist2=[[34,35,36],[37,38,39],[40,41,42]]
-        lab_len = len(mylist2[0])
+        if mylist2 != []:
+            lab_len = len(mylist2[0])
+        else:
+            lab_len = 0
         #mylist3=[[11],[16],[33]]
 
 
@@ -386,7 +409,10 @@ def LecturerCode(batch):
         
         #mylist1 = [[1,2],[3,4],[5,6],[7,8],[9,10],[11,12],[13,14],[15,16],[17,18],[19,20],[21,22],[23,24]]
         #mylist2 = [[25,26,27],[28,29,30],[31,32,33],[34,35,36],[37,38,39],[40,41,42]]
-        lab_len = len(mylist2[0])
+        if mylist2 != []:
+            lab_len = len(mylist2[0])
+        else:
+            lab_len = 0
         #mylist3 = []
 
 
@@ -395,7 +421,7 @@ def LecturerCode(batch):
 
 
 def allLecturerCode():
-    lec_name = ['BB', 'SP', 'ML', 'DMG', 'SLS', 'JJ', 'YB', 'AS','BK','SKS', 'DG', 'RS', 'PPB', 'SKR','DK','RG', 'PL', 'SS','PG','PS','RP','AK','CD','MLP','BRM','RPD','NRB', 'TEST', 'Supervisor','RN', 'KB','RP', 'SN', 'NK', 'TN', 'GT', 'RUG', 'AJS', 'APS', 'PV', 'SDH', 'AB', 'TBM', 'GCJ', 'SD', 'AD', 'NS','SL', 'IMS','Supervisor1']
+    lec_name = ['BB', 'SP', 'ML', 'DMG', 'SLS', 'JJ', 'YB', 'AS','BK','SKS', 'DG', 'RS', 'PPB', 'SKR','DK','RG', 'PL', 'SS','PG','PS','RPh','AK','CD','MLP','BRM','RPD','NRB', 'TEST', 'Supervisor','RN', 'KB','RP', 'SN', 'NK', 'TN', 'GT', 'RUG', 'AJS', 'APS', 'PV', 'SDH', 'AB', 'TBM', 'GCJ', 'SD', 'AD', 'NS','SL', 'IMS','Supervisor1']
     lec_Id =  [  1,    2,    3,     4,     5,     6,    7,    8,   9,   10,   11,   12,    13,    14,  15,  16,   17,   18,  19,  20,  21,  22,  23,  24,    25,   26,   27,    28,       29,        30,   31,  32,  33,   34,    35,   36,   37,    38,    39,   40,    41,    42,  43,     44,    45,   46,  47,  48,    49 ,   50]
 
     return lec_name, lec_Id

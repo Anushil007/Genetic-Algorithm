@@ -18,6 +18,7 @@ class Computer_First(models.Model):
     Lecturer_Subject = models.CharField(max_length = 100, blank=True, default=None)
     Lecturer_Period = models.IntegerField(blank = True, null=True, default=0)
     Lab_Class = models.CharField(max_length = 50, blank=True, default=None)
+    Lab_Subject = models.CharField(max_length = 50, blank=True, default=None)
     Lab_Lec_Period = models.CharField(max_length = 20, blank =True, null=True, default=0)
 
     def __str__(self):
@@ -32,6 +33,7 @@ class Computer_Second(models.Model):
     Lecturer_Subject = models.CharField(max_length = 100, blank=True, default=None)
     Lecturer_Period = models.IntegerField(blank = True, null=True, default=0)
     Lab_Class = models.CharField(max_length = 50, blank=True, default=None)
+    Lab_Subject = models.CharField(max_length = 50, blank=True, default=None)
     Lab_Lec_Period = models.CharField(max_length = 20, blank =True, null=True, default=0)
 
     def __str__(self):
@@ -46,6 +48,7 @@ class Computer_Third(models.Model):
     Lecturer_Subject = models.CharField(max_length = 100, blank=True, default=None)
     Lecturer_Period = models.IntegerField(blank = True, null=True, default=0)
     Lab_Class = models.CharField(max_length = 50, blank=True, default=None)
+    Lab_Subject = models.CharField(max_length = 50, blank=True, default=None)
     Lab_Lec_Period = models.CharField(max_length = 20, blank =True, null=True, default=0)
 
     def __str__(self):
@@ -61,6 +64,7 @@ class Computer_Fourth(models.Model):
     Lecturer_Subject = models.CharField(max_length = 100, blank=True, default=None)
     Lecturer_Period = models.IntegerField(blank = True, null=True, default=0)
     Lab_Class = models.CharField(max_length = 50, blank=True, default=None)
+    Lab_Subject = models.CharField(max_length = 50, blank=True, default=None)
     Lab_Lec_Period = models.CharField(max_length = 20, blank =True, null=True, default=0)
 
     def __str__(self):
@@ -75,6 +79,7 @@ class Electrical_First(models.Model):
     Lecturer_Subject = models.CharField(max_length = 100, blank=True, default=None)
     Lecturer_Period = models.IntegerField(blank = True, null=True, default=0)
     Lab_Class = models.CharField(max_length = 50, blank=True, default=None)
+    Lab_Subject = models.CharField(max_length = 50, blank=True, default=None)
     Lab_Lec_Period = models.CharField(max_length = 20, blank =True, null=True, default=0)
 
     def __str__(self):
@@ -89,6 +94,7 @@ class Electrical_Second(models.Model):
     Lecturer_Subject = models.CharField(max_length = 100, blank=True, default=None)
     Lecturer_Period = models.IntegerField(blank = True, null=True, default=0)
     Lab_Class = models.CharField(max_length = 50, blank=True, default=None)
+    Lab_Subject = models.CharField(max_length = 50, blank=True, default=None)
     Lab_Lec_Period = models.CharField(max_length = 20, blank =True, null=True, default=0)
 
     def __str__(self):
@@ -102,6 +108,7 @@ class Electrical_Third(models.Model):
     Lecturer_Subject = models.CharField(max_length = 100, blank=True, default=None)
     Lecturer_Period = models.IntegerField(blank = True, null=True, default=0)
     Lab_Class = models.CharField(max_length = 50, blank=True, default=None)
+    Lab_Subject = models.CharField(max_length = 50, blank=True, default=None)
     Lab_Lec_Period = models.CharField(max_length = 20, blank =True, null=True, default=0)
 
     def __str__(self):
@@ -115,6 +122,7 @@ class Electrical_Fourth(models.Model):
     Lecturer_Subject = models.CharField(max_length = 100, blank=True, default=None)
     Lecturer_Period = models.IntegerField(blank = True, null=True, default=0)
     Lab_Class = models.CharField(max_length = 50, blank=True, default=None)
+    Lab_Subject = models.CharField(max_length = 50, blank=True, default=None)
     Lab_Lec_Period = models.CharField(max_length = 20, blank =True, null=True, default=0)
 
     def __str__(self):
