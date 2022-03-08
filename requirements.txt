@@ -1,0 +1,5 @@
+Django==4.0.2
+fpdf==1.7.2
+matplotlib==3.5.1
+numpy==1.22.1
+PyPDF2==1.26.0
