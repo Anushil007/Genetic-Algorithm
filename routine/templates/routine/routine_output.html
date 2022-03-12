@@ -63,8 +63,8 @@
             </div>
             <span class="nav-link-text ms-1">Sign In</span>
           </a>
-        </li> 
-       <!-- <li class="nav-item">
+        </li>
+        <!-- <li class="nav-item">
           <a class="nav-link text-white " href="{% url 'registration' %}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
@@ -82,20 +82,11 @@
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="text-dark active" href="{% url 'homepage' %}">Computer</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Years</li>
+            <li class="breadcrumb-item text-sm"><a class="text-dark active" href="{% url 'homepage' %}">Routine</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Department</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Computer Years</h6>
+          <h6 class="font-weight-bolder mb-0">Department/Year</h6>
         </nav>
-        {% if request.user.is_authenticated %}
-          <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">{{request.user}}</span>
-              </a>
-            </li>
-          {% endif %}
           <!-- <ul class="navbar-nav  justify-content-end">
             <li class="nav-item px-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0">
@@ -124,14 +115,14 @@
                                   <i class="material-icons opacity-10">person</i>
                                 </div>
                               </div>
-                              <br>
+                               <br> 
                               <hr class="dark horizontal my-0">
                               <div class="card-footer p-3">
-                              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'addComputerfirst' %}">First Year</a></p></a>
+                              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'view_routine_computerFirst' %}">Computer First Year</a></p></a>
                               </div>
                             </div>
                           </div>
-                          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+                          <!-- <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                             <div class="card">
                               <div class="card-header p-3 pt-2">
                                 <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
@@ -141,10 +132,10 @@
                               <br>
                               <hr class="dark horizontal my-0">
                               <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'addComputersecond' %}">Second Year</p></a>
+                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'view_routine_computerSecond' %}">Computer Second Year</p></a>
                               </div>
                             </div>
-                          </div>
+                          </div> -->
                           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                             <div class="card">
                               <div class="card-header p-3 pt-2">
@@ -155,7 +146,7 @@
                               <br>
                               <hr class="dark horizontal my-0">
                               <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"></span><a href="{% url 'addComputerthird' %}"> Third Year</p></a> 
+                                <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"></span><a href="{% url 'view_routine_computerThird' %}">Computer Third Year</p></a> 
                               </div>
                             </div>
                           </div>
@@ -169,10 +160,70 @@
                               <br>
                               <hr class="dark horizontal my-0">
                               <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'addComputerfourth' %}"> Fourth Year </p></a>
+                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'view_routine_computerFourth' %}">Computer Fourth Year </p></a>
                               </div>
                             </div>
                           </div>
+                          <div class="col-xl-3 col-sm-6">
+                            <div class="card">
+                              <div class="card-header p-3 pt-2">
+                                <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                                  <i class="material-icons opacity-10">person</i>
+                                </div>
+                              </div>
+                              <br>
+                              <hr class="dark horizontal my-0">
+                              <div class="card-footer p-3">
+                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'view_routine_electricalFirst' %}">Electrical First Year </p></a>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-xl-3 col-sm-6 mt-5">
+                            <div class="card">
+                              <div class="card-header p-3 pt-2">
+                                <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                                  <i class="material-icons opacity-10">person</i>
+                                </div>
+                              </div>
+                              <br>
+                              <hr class="dark horizontal my-0">
+                              <div class="card-footer p-3">
+                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'view_routine_electricalSecond' %}">Electrical Second Year </p></a>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-xl-3 col-sm-6 mt-5">
+                            <div class="card">
+                              <div class="card-header p-3 pt-2">
+                                <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                                  <i class="material-icons opacity-10">person</i>
+                                </div>
+                              </div>
+                              <br>
+                              <hr class="dark horizontal my-0">
+                              <div class="card-footer p-3">
+                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'view_routine_electricalThird' %}">Electrical Third Year </p></a>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-xl-3 col-sm-6 mt-5">
+                            <div class="card">
+                              <div class="card-header p-3 pt-2">
+                                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                                  <i class="material-icons opacity-10">person</i>
+                                </div>
+                              </div>
+                              <br>
+                              <hr class="dark horizontal my-0">
+                              <div class="card-footer p-3">
+                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'view_routine_electricalFourth' %}">Electrical Fourth Year </p></a>
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
                         <footer class="footer py-4  ">
                           <div class="container-fluid">

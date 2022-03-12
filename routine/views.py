@@ -9,37 +9,106 @@ from routine.packages.pdf_code import pdf_code
 from .forms import Computer1ModelForm,Computer2ModelForm,Computer3ModelForm,Computer4ModelForm,Electrical1ModelForm, Electrical2ModelForm, Electrical3ModelForm, Electrical4ModelForm,LabroomModelForm
 from .packages.run import call
 from .packages.teacher_code import LecturerCode
-
-
+from routine.packages.teacher_pdf_gen import make_teach_pdf
+import pickle
 import sys
-
+from .forms import CustomerRegistrationForm
+from django.views import View
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def homepage(request):
     return render(request, 'routine/dashboard.html')
 
+@login_required(login_url='/login/')
 def generate_routine(request):
     print(sys.argv)
-    if 'runserver' in sys.argv:
-        call()  
-        print(sys.argv)  
-        # data=r"D:\Minor Project on Automated Timetable Generator\multiple database\output.pdf"      
-        # context = {
-        #     'output' : data
-        # }
-        with open('D:\Minor Project on Automated Timetable Generator\multiple database\output.pdf', 'rb') as pdf:
+    #if 'runserver' in sys.argv:
+    call()  
+    print(sys.argv)  
+    # data=r"D:\Minor Project on Automated Timetable Generator\multiple database\output.pdf"      
+    # context = {
+    #     'output' : data
+    # }
+    with open('D:\Minor Project on Automated Timetable Generator\multiple database\output.pdf', 'rb') as pdf:
+        response = HttpResponse(pdf.read(), content_type='application/pdf')
+        response['Content-Disposition'] = 'filename = output.pdf'
+        return response
+
+@login_required(login_url='/login/')    
+def view_routine(request):
+    return render(request, 'routine/routine_output.html')
+
+
+@login_required(login_url='/login/')
+def generate_teacher_routine(request):
+    #if 'runserver' in sys.argv:
+    with open('file6.txt','rb') as f:
+        allLecturerMatrix=pickle.load(f)
+    make_teach_pdf(allLecturerMatrix)
+
+    # data=r"D:\Minor Project on Automated Timetable Generator\multiple database\output_teacher"      
+    # context = {
+    #     'output' : data
+    # }
+    # return render(request, 'routine/output.html', context)
+    
+    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output_teacher', 'rb') as pdf:
+        response = HttpResponse(pdf.read(), content_type='application/pdf')
+        response['Content-Disposition'] = 'filename = output_teacher'
+        return response
+
+def view_routine_computerFirst(request):
+    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output5_fun.pdf', 'rb') as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
-            response['Content-Disposition'] = 'filename = output.pdf'
+            response['Content-Disposition'] = 'filename = output5_fun.pdf'
             return response
 
-        
+def view_routine_computerSecond(request):
+    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output2_fun.pdf', 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'filename = output4_fun.pdf'
+            return response
 
-def generate_code(request):
-    if 'runserver' in sys.argv:
-        LecturerCode(274)
-        
-        return HttpResponse("Code is generated")
+def view_routine_computerThird(request):
+    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output4_fun.pdf', 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'filename = output3_fun.pdf'
+            return response
 
+def view_routine_computerFourth(request):
+    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output3_fun.pdf', 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'filename = output2_fun.pdf'
+            return response
+
+def view_routine_electricalFourth(request):
+    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output6_fun.pdf', 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'filename = output6_fun.pdf'
+            return response
+
+def view_routine_electricalFirst(request):
+    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output8_fun.pdf', 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'filename = output8_fun.pdf'
+            return response
+
+def view_routine_electricalSecond(request):
+    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output1_fun.pdf', 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'filename = output1_fun.pdf'
+            return response
+
+def view_routine_electricalThird(request):
+    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output7_fun.pdf', 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'filename = output7_fun.pdf'
+            return response
+
+
+
+@login_required(login_url='/login/')
 def addLabroom(request):
     if request.method == "POST":
         form = LabroomModelForm(request.POST)
@@ -47,24 +116,38 @@ def addLabroom(request):
             form.save()
     return render(request, 'routine/lab_room.html')
 
+@login_required(login_url='/login/')
 def computerBatch(request):
     return render(request, 'routine/year_computer.html')
 
+@login_required(login_url='/login/')
 def electricalBatch(request):
     return render(request, 'routine/year_electrical.html')
+
+def aboutus(request):
+    return render(request, 'routine/aboutus.html')
 
 def computerData_first(request):
     if request.method == "POST":
         form = Computer1ModelForm(request.POST)
+
         period = int(form['Lecturer_Period'].value())
+        print('Period Type',type(period))
         codeLst, lecCodeLst, lectId, lab_lst, lab_lecturer, lab_room, lab_room_lst, mylist1, mylist2, mylist3, lab_len = LecturerCode(377)  
-        if lab_lst != []:          
+        if lab_lst != []:   
+            print(period)       
             period = period + max(lab_lst)
+ 
         if period <= 42:
             if form.is_valid():
+            
                 form.save()
                 messages.success(request, 'Your data has been entered into the database.')
+            else:
+             
+                messages.error(request, 'Please enter the valid data.')
         else:
+           
             messages.error(request, 'You cant add more lecturer.')
 # return redirect('/')
     return render(request, 'routine/computer_first.html')
@@ -179,3 +262,16 @@ def electricalData_fourth(request):
             messages.error(request, 'You cant add more lecturer.')
 
     return render(request, 'routine/electrical_fourth.html')
+
+# authentication part
+class CustomerRegistrationView(View):
+    def get(self, request):
+        form = CustomerRegistrationForm()
+        return render(request, 'routine/registration.html', {'form':form})
+    
+    def post(self, request):
+        form = CustomerRegistrationForm(request.POST)
+        if form.is_valid():
+            messages.success(request, 'Congratulation !! Registered Succesfully')
+            form.save()
+        return render(request, 'routine/registration.html', {'form':form}) 

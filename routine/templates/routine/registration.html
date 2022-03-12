@@ -1,5 +1,8 @@
 {% load static %}
 
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,18 +49,8 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
-        {% if request.user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link text-white " href="{% url 'logout' %}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">login</i>
-            </div>
-            <span class="nav-link-text ms-1">Log Out</span>
-          </a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/sign-in.html">
+          <a class="nav-link text-white " href="{% url 'login' %}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">login</i>
             </div>
@@ -65,14 +58,13 @@
           </a>
         </li>
         <!-- <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/sign-up.html">
+          <a class="nav-link text-white " href="{% url 'registration' %}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
             <span class="nav-link-text ms-1">Sign Up</span>
           </a>
         </li> -->
-        {% endif %}
       </ul>
     </div>
   </aside>
@@ -82,10 +74,10 @@
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="text-dark active" href="{% url 'homepage' %}">Electrical</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Years</li>
+            <li class="breadcrumb-item text-sm"><a class="text-dark active" href="{% url 'homepage' %}">Dashboard</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Registration</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Electrical Years</h6>
+          <!-- <h6 class="font-weight-bolder mb-0">Login</h6> -->
         </nav>
         {% if request.user.is_authenticated %}
           <ul class="navbar-nav  justify-content-end">
@@ -96,84 +88,50 @@
               </a>
             </li>
           {% endif %}
-          <!-- <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                      </div>> -->
+          
                       </nav>
                       <!-- End Navbar -->
                       <div class="container-fluid py-4">
                         <div class="row">
-                          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                            <div class="card">
-                              <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                                  <i class="material-icons opacity-10">person</i>
-                                </div>
-                              </div>
-                               <br> 
-                              <hr class="dark horizontal my-0">
-                              <div class="card-footer p-3">
-                              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'addElectricalfirst' %}">First Year</a></p></a>
-                              </div>
+                            <div class="col-sm-6 offset-sm-3">
+                                <h3>Registration</h3>
+                                <hr>
+                             
+                                <form action="" method="post" novalidate class="shadow p-5">
+                                   {% if messages %}
+                                      {% for message in messages %}
+                                         <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+                                      {% endfor %}
+                                   {% endif %}
+                                   {% csrf_token %}
+                                   {% for fm in form %}
+                                      <div class="form-group mb-3">
+                                         {{fm.label_tag}} {{fm}} <small class="text-danger">
+                                            {{fm.errors|striptags}}
+                                         </small>
+                             
+                                      </div>
+                                   {% endfor %}
+                                   <input type="submit" value="Submit" class="btn btn-primary">
+                                   <br>
+                                   <!-- <div class="text-center text-primary
+                                    fw-bold"><small>Existing User ? <a href="{% url 'login' %}" 
+                                    class="text-danger">Login Now</a></small>
+                                   </div> -->
+                                   {% if form.non_field_errors %}
+                                      {% for error in form.non_field_errors %}
+                                         <p class="alert alert-danger my-3">{{error}}</p>
+                                      {% endfor %}
+                                   {% endif %}
+                                </form>
+                               </div>
                             </div>
                           </div>
-                          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                            <div class="card">
-                              <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                                  <i class="material-icons opacity-10">person</i>
-                                </div>
-                              </div>
-                              <br>
-                              <hr class="dark horizontal my-0">
-                              <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'addElectricalsecond' %}">Second Year</p></a>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                            <div class="card">
-                              <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                                  <i class="material-icons opacity-10">person</i>
-                                </div>
-                              </div>
-                              <br>
-                              <hr class="dark horizontal my-0">
-                              <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"></span><a href="{% url 'addElectricalthird' %}"> Third Year</p></a> 
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-xl-3 col-sm-6">
-                            <div class="card">
-                              <div class="card-header p-3 pt-2">
-                                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                                  <i class="material-icons opacity-10">person</i>
-                                </div>
-                              </div>
-                              <br>
-                              <hr class="dark horizontal my-0">
-                              <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><a href="{% url 'addElectricalfourth' %}"> Fourth Year </p></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+
+                          
+
+                          
+                        
                         <footer class="footer py-4  ">
                           <div class="container-fluid">
                             <div class="row align-items-center justify-content-lg-between">
@@ -210,3 +168,6 @@
                     </body>
 
                     </html>
+
+
+

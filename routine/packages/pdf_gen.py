@@ -23,7 +23,7 @@ def make_pdf(routine1,batch):
                         routine[i][j] = 'Break'
                     elif routine[i][j] <= codeLst[u]:
 
-                        routine[i][j] = '\n' + lecCodeLst[u] + '(LEC)' + '\n ' + Lecturer_Sub[u]
+                        routine[i][j] = '\n' + lecCodeLst[u] + '(LEC)' + '\n ' + Lecturer_Sub[u] + '\n'
                     else:
                         pass
 
@@ -38,7 +38,7 @@ def make_pdf(routine1,batch):
                         #     if k in lectId:
                         #         index = lectId.index(k)
                         #         teacher_routine[index] [i][j] = 1
-                        routine[i][j] =  '\n' + lab[u]  + '\n' + lab_lecturer_code[u]       
+                        routine[i][j] =  '\n' + lab[u]  + '\n' + lab_lecturer_code[u] + '\n'      
                     else:
                         pass
 
@@ -253,8 +253,8 @@ def make_pdf(routine1,batch):
     pdf.ln()
     if batch==276:
         pdf.output('output1_fun.pdf')
-    elif batch==376:
-        pdf.output('output2_fun.pdf')
+    # elif batch==376:
+    #     pdf.output('output2_fun.pdf')
     elif batch==374:
         pdf.output('output3_fun.pdf')
     elif batch==375:
@@ -268,14 +268,14 @@ def make_pdf(routine1,batch):
     elif batch==277:
         pdf.output('output8_fun.pdf')
         output = PdfFileWriter()
-        pdf1 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output1_fun.pdf", "rb"))
-        pdf2 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output2_fun.pdf", "rb"))
-        pdf3 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output3_fun.pdf", "rb"))
-        pdf4 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output4_fun.pdf", "rb"))
+        pdf1 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output8_fun.pdf", "rb"))
+        pdf2 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output1_fun.pdf", "rb"))
+        pdf3 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output7_fun.pdf", "rb"))
+        pdf4 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output6_fun.pdf", "rb"))
         pdf5 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output5_fun.pdf", "rb"))
-        pdf6 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output6_fun.pdf", "rb"))
-        pdf7 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output7_fun.pdf", "rb"))
-        pdf8 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output8_fun.pdf", "rb"))
+        #pdf6 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output2_fun.pdf", "rb"))
+        pdf7 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output4_fun.pdf", "rb"))
+        pdf8 = PdfFileReader(open(r"D:\Minor Project on Automated Timetable Generator\multiple database\output3_fun.pdf", "rb"))
         #pdfTwo = PdfFileReader(open("path/to/pdf2.pdf", "rb"))
 
         output.addPage(pdf1.getPage(0))
@@ -283,7 +283,7 @@ def make_pdf(routine1,batch):
         output.addPage(pdf3.getPage(0))
         output.addPage(pdf4.getPage(0))
         output.addPage(pdf5.getPage(0))
-        output.addPage(pdf6.getPage(0))
+        #output.addPage(pdf6.getPage(0))
         output.addPage(pdf7.getPage(0))
         output.addPage(pdf8.getPage(0))
         #output.addPage(pdfTwo.getPage(0))
