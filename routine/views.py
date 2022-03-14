@@ -30,7 +30,7 @@ def generate_routine(request):
     # context = {
     #     'output' : data
     # }
-    with open('D:\Minor Project on Automated Timetable Generator\multiple database\output.pdf', 'rb') as pdf:
+    with open('/home/rochak/Minor_Project/routine_generator_working/output.pdf', 'rb') as pdf:
         response = HttpResponse(pdf.read(), content_type='application/pdf')
         response['Content-Disposition'] = 'filename = output.pdf'
         return response
@@ -53,55 +53,55 @@ def generate_teacher_routine(request):
     # }
     # return render(request, 'routine/output.html', context)
     
-    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output_teacher', 'rb') as pdf:
+    with open(r'/home/rochak/Minor_Project/routine_generator_working/output_teacher', 'rb') as pdf:
         response = HttpResponse(pdf.read(), content_type='application/pdf')
         response['Content-Disposition'] = 'filename = output_teacher'
         return response
 
 def view_routine_computerFirst(request):
-    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output5_fun.pdf', 'rb') as pdf:
+    with open(r'/home/rochak/Minor_Project/routine_generator_working/output5_fun.pdf', 'rb') as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Disposition'] = 'filename = output5_fun.pdf'
             return response
 
 def view_routine_computerSecond(request):
-    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output2_fun.pdf', 'rb') as pdf:
+    with open(r'/home/rochak/Minor_Project/routine_generator_working/output2_fun.pdf', 'rb') as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Disposition'] = 'filename = output4_fun.pdf'
             return response
 
 def view_routine_computerThird(request):
-    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output4_fun.pdf', 'rb') as pdf:
+    with open(r'/home/rochak/Minor_Project/routine_generator_working/output4_fun.pdf', 'rb') as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Disposition'] = 'filename = output3_fun.pdf'
             return response
 
 def view_routine_computerFourth(request):
-    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output3_fun.pdf', 'rb') as pdf:
+    with open(r'/home/rochak/Minor_Project/routine_generator_working/output3_fun.pdf', 'rb') as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Disposition'] = 'filename = output2_fun.pdf'
             return response
 
 def view_routine_electricalFourth(request):
-    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output6_fun.pdf', 'rb') as pdf:
+    with open(r'/home/rochak/Minor_Project/routine_generator_working/output6_fun.pdf', 'rb') as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Disposition'] = 'filename = output6_fun.pdf'
             return response
 
 def view_routine_electricalFirst(request):
-    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output8_fun.pdf', 'rb') as pdf:
+    with open(r'/home/rochak/Minor_Project/routine_generator_working/output8_fun.pdf', 'rb') as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Disposition'] = 'filename = output8_fun.pdf'
             return response
 
 def view_routine_electricalSecond(request):
-    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output1_fun.pdf', 'rb') as pdf:
+    with open(r'/home/rochak/Minor_Project/routine_generator_working/output1_fun.pdf', 'rb') as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Disposition'] = 'filename = output1_fun.pdf'
             return response
 
 def view_routine_electricalThird(request):
-    with open(r'D:\Minor Project on Automated Timetable Generator\multiple database\output7_fun.pdf', 'rb') as pdf:
+    with open(r'/home/rochak/Minor_Project/routine_generator_working/output7_fun.pdf', 'rb') as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Disposition'] = 'filename = output7_fun.pdf'
             return response
