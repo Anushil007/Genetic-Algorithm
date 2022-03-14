@@ -20,13 +20,13 @@ def make_teach_pdf(allLecturerMatrix):
         # routine1_1 = np.array(routine1)
         # routine1_1 = routine1_1.flatten()
         # print(len(routine1_1))
-        for i in range(6):
-            for j in range(8):
-                if type(routine1[i][j]) != str:
-                    if routine1[i][j] == 1:
-                        routine1[i][j] = 'Class'
-                    else:
-                        routine1[i][j] = 'Leisure'
+        # for i in range(6):
+        #     for j in range(8):
+        #         if type(routine1[i][j]) != str:
+        #             if routine1[i][j] == 1:
+        #                 routine1[i][j] = 'Class'
+        #             else:
+        #                 routine1[i][j] = 'Leisure'
         
         routine_str = []
         routine =deepcopy(routine1)

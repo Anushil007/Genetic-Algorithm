@@ -6,15 +6,24 @@ import pickle
 import os
 from .lab_conflict import lab_checkconflict
 from .labmatrix import lab_matrix
+import itertools
 
+# to change nested list into a one dimensional list
+
+def oneDArray(x):
+    return list(itertools.chain(*x))
 def lec_checkconflict(routine1, batch,overal_score):
 
     lec_name, lec_Id = allLecturerCode()
     #score_from_lab,allLabMatrix=lab_checkconflict(routine1, batch,overal_score)
     if batch==276:
         allLecturerMatrix = [[[0 for j in range(8)]for i in range(6)]for k in range(len(lec_Id))]
+        allTeacherMatrix= [[[0 for j in range(8)]for i in range(6)]for k in range(len(lec_Id))]
         with open('file6.txt','wb') as f:
             pickle.dump(allLecturerMatrix,f)
+        f.close()
+        with open('file8.txt','wb') as f:
+            pickle.dump(allTeacherMatrix,f)
         f.close()
     with open('file6.txt','rb') as f:
         allLecturerMatrix=pickle.load(f)
@@ -105,10 +114,40 @@ def lec_checkconflict(routine1, batch,overal_score):
 
     
     if score==0 and scorelab==0 and overal_score==480:
+        allTest=[]
         with open('file6.txt','wb') as f:
             pickle.dump(allLecturerMatrix,f)
         f.close()
 
+        with open('file6.txt','rb') as f:
+            allTest=pickle.load(f)
+
+        with open('file8.txt','rb') as f:
+            allTeacherMatrix=pickle.load(f)
+        for u in range(len(allLecturerMatrix)):
+            oneDmylist2=deepcopy(mylist2)
+            oneDmylist2=oneDArray(oneDmylist2)
+            for i in range(6):
+                for j in range(8):
+                    a=allTest[u][i][j]
+                    b=allTeacherMatrix[u][i][j]
+                    if a==1 and b==0:
+                        if batch<300 :
+                            var=str(batch-200)
+                            if routine[i][j] in oneDmylist2:
+                                allTeacherMatrix[u][i][j]="BEL_LAB_0"+var
+                            else:
+                                 allTeacherMatrix[u][i][j]="BEL_LEC_0"+var
+                        else:
+                            var=str(batch-300)
+                            if routine[i][j] in oneDmylist2:
+                                allTeacherMatrix[u][i][j]="BCT_LAB_0"+var
+                            else:
+                                allTeacherMatrix[u][i][j]="BCT_LEC_0"+var
+                                        
+        with open('file8.txt','wb') as f:
+            pickle.dump(allTeacherMatrix,f)
+        f.close()
         with open('file7.txt','wb') as f:
             pickle.dump(allLabMatrix,f)
         f.close()
@@ -122,7 +161,7 @@ def lec_checkconflict(routine1, batch,overal_score):
                 index = lec_name.index(lec_name[i])
                 print(lec_Id[i])
                 for j in range(6):
-                    print(allLecturerMatrix[i][j])
+                    print(allTeacherMatrix[i][j])
             
             print("Routine of lab classes:")
 
@@ -130,9 +169,6 @@ def lec_checkconflict(routine1, batch,overal_score):
                 print(lab_room_lst[i])
                 for j in range(len(allLabMatrix[i])):
                     print(allLabMatrix[i][j])
-
-
-
     return score+scorelab
 
 

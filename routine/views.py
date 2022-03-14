@@ -43,9 +43,9 @@ def view_routine(request):
 @login_required(login_url='/login/')
 def generate_teacher_routine(request):
     #if 'runserver' in sys.argv:
-    with open('file6.txt','rb') as f:
-        allLecturerMatrix=pickle.load(f)
-    make_teach_pdf(allLecturerMatrix)
+    with open('file8.txt','rb') as f:
+        allTeacherMatrix=pickle.load(f)
+    make_teach_pdf(allTeacherMatrix)
 
     # data=r"D:\Minor Project on Automated Timetable Generator\multiple database\output_teacher"      
     # context = {
